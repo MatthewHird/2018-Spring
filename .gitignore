@@ -1,0 +1,16 @@
+
+CSCI 161/\.codelite/
+
+CSCI 161/Assignment_01/Debug/
+
+*.project
+
+*.workspace
+
+CSCI 161/Makefile
+
+CSCI 161/Assignment_01/Assignment_01\.txt
+
+*.mk
+
+*.md
