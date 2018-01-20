@@ -1,11 +1,12 @@
 #pragma once 
-//  #include "../include/reservation_system.h"
+#include "../include/res_data.h"
+
 
 class LinkedList
 {
 private:  
     struct Node{
-        Data * data;
+        ResData * data;
         Node * next;
     };
     Node * head;
@@ -13,11 +14,12 @@ private:
     
 public:
     LinkedList();  // Constructor declaration
+    ~LinkedList(); // Deconstructor declaration
     
-    void insertToFront(Data * data);
-    void insertToBack(Data * data);
-    Data popFront(int key);
-    Data popBack(int key);
-    Data &lookup(int key);
-    bool exists(int key);    
+    void insertToFront(ResData* data);
+    void insertToBack(ResData* data);
+    ResData popFront(int key);
+    ResData popBack(int key);
+    ResData &lookup(int key);
+    bool exists(int key);  
 };

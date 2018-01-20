@@ -2,8 +2,9 @@
 
 int main()
 {
-    ReservationSystem resSys();
+    ReservationSystem resSys;
     
     resSys.menu();
+    
 	return 0;
 }

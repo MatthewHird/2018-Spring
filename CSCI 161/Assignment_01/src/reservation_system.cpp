@@ -6,22 +6,25 @@ ReservationSystem::ReservationSystem(){
     
 }
 
-ReservationSystem::menu(){
+ReservationSystem::~ReservationSystem()
+{}
+
+void ReservationSystem::menu(){
     
 }
 
-ReservationSystem::submit(){
+void ReservationSystem::submit(){
     
 }
 
-ReservationSystem::pickup_next(){
+void ReservationSystem::pickup_next(){
     
 }
 
-ReservationSystem::list(){
+void ReservationSystem::list(){
     
 }
 
-ReservationSystem::terminate(){
+void ReservationSystem::terminate(){
     
 }

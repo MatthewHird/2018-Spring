@@ -7,26 +7,29 @@ LinkedList::LinkedList(){
     tail = 0;
 }
 
-LinkedList::insertToFront(){
+LinkedList::~LinkedList()
+{}
+
+void LinkedList::insertToFront(ResData * data){
     
 }
 
-LinkedList::insertToBack(){
+void LinkedList::insertToBack(ResData * data){
     
 }
 
-LinkedList::popFront(){
+ResData LinkedList::popFront(int key){
     
 }
 
-LinkedList::popBack(){
+ResData LinkedList::popBack(int key){
     
 }
 
-LinkedList::lookup(){
+ResData & LinkedList::lookup(int key){
     
 }
 
-LinkedList::exists(){
-    
+bool LinkedList::exists(int key){
+    return 1;
 }
