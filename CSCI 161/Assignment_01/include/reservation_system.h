@@ -1,15 +1,32 @@
+//********************************************************************
+// File: reservation_system.h
+// Author: Matthew Hird
+// Date: January 15, 2018
+// Updated: January 19, 2018
+//
+// Purpose: a brief description of what's in the file
+//
+// Notes: optional - any additional notes on the use of the file
+//
+// References: optional - a list of related reference materials
+//********************************************************************
+
 #pragma once
 #include <fstream>
+#include <sstream>
 #include "../include/linked_list.h"
 using namespace std;
 
 class ReservationSystem
 {
 private:
-    int pickup_hour;
-    int pickup_minute;
+    int term = false;
+    string pickup_hour;
+    string pickup_minute;
+    string garbage;
     string pickup_location;
     string pickup_name;
+    LinkedList resList;
     
 public:
     ReservationSystem();  // Constructor declaration
