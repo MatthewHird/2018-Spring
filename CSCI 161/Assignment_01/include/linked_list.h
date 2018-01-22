@@ -2,7 +2,7 @@
 // File: linked_list.h
 // Author: Matthew Hird
 // Date: January 15, 2018
-// Updated: January 19, 2018
+// Updated: January 19, 2018, January 20, 2018, January 21, 2018
 //
 // Purpose: a brief description of what's in the file
 //
@@ -24,15 +24,17 @@ private:
     };
     Node * head;
     Node * tail;
+    int node_count;
     
 public:
     LinkedList();  // Constructor declaration
     ~LinkedList(); // Deconstructor declaration
     
-    void insertToFront(ResData* data);
-    void insertToBack(ResData* data);
-    ResData popFront(int key);
-    ResData popBack(int key);
-    ResData &lookup(int key);
-    bool exists(int key);  
+    void insert_chronologically(ResData * data);
+    void insert_to_front(ResData * data);
+    void insert_to_back(ResData * data);
+    ResData & lookup_front();
+    void delete_front();
+    void lookup_all();
+    bool does_exist();  
 };

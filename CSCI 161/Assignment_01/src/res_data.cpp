@@ -2,7 +2,7 @@
 // File: res_data.cpp
 // Author: Matthew Hird
 // Date: January 19, 2018
-// Updated: 
+// Updated: January 20, 2018, January 21, 2018
 //
 // Purpose: a brief description of what's in the file
 //
@@ -19,16 +19,17 @@ ResData::ResData()
 ResData::~ResData()
 {}
 
-void ResData::in_time(){
-    
+void ResData::in_time(string hr, string min){
+    time = (hr[0] - '0') * 1000 + (hr[1] - '0') * 100 + (min[0] - '0') * 10 + min[1] - '0';
+    clock_time = hr + ":" + min;
 }
 
-void ResData::in_location(){
-    
+void ResData::in_location(string loc){
+    location = loc;
 }
 
-void ResData::in_name(){
-    
+void ResData::in_name(string nam){
+    name = nam;
 }
     
 void ResData::out_display(){

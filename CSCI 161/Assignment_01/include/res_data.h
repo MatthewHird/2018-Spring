@@ -2,7 +2,7 @@
 // File: res_data.h
 // Author: Matthew Hird
 // Date: January 19, 2018
-// Updated: 
+// Updated: January 20, 2018, January 21, 2018
 //
 // Purpose: a brief description of what's in the file
 //
@@ -18,8 +18,7 @@ using namespace std;
 class ResData
 {
 private:
-    int hour;
-    int minute;
+    string clock_time;
     string location;
     string name;
     
@@ -27,9 +26,10 @@ public:
     ResData();   // Constructor declaration
     ~ResData();  // Deconstructor declaration
     
-    void in_time();
-    void in_location();
-    void in_name();
+    int time;
+    void in_time(string hr, string min);
+    void in_location(string loc);
+    void in_name(string nam);
     
     void out_display();
 };
