@@ -2,7 +2,7 @@
 // File: reservation_system.cpp
 // Author: Matthew Hird
 // Date: January 15, 2018
-// Updated: January 19, 2018, January 20, 2018, January 21, 2018
+// Updated: January 22, 2018
 //
 // Purpose: a brief description of what's in the file
 //
@@ -183,20 +183,17 @@ void ReservationSystem::submit(){
         }
     } while (bad_input == true);
     
-    ResData data;
-    data.in_time(pickup_hour, pickup_minute);
-    data.in_location(pickup_location);
-    data.in_name(pickup_name);
+    ResData * data = new ResData(pickup_hour, pickup_minute, pickup_location, pickup_name);
     
-    resList.insert_chronologically(&data);
+    resList.insert_chronologically(data);
     res_fulfill_count++;    
 }
 
 void ReservationSystem::pickup_next(){
     if (resList.does_exist() == true) {
-        //ResData data = resList.lookup_front();
-        //data.out_display();
-        resList.delete_front();
+        cout << "-------------------------------------------------------" << endl;
+        resList.pop_front();
+        cout << "The reservation information has been passed to a driver" << endl;
     } else if (resList.does_exist() == false) {
         cout << endl<< "No more reservations left in reservation list" << endl;
     }
@@ -204,7 +201,9 @@ void ReservationSystem::pickup_next(){
 
 void ReservationSystem::list(){
     if (resList.does_exist() == true) {
-        resList.lookup_all();
+        cout << "-------------------------------------------------------" << endl;
+        resList.lookup_all() ;
+        cout << resList.get_node_count() << " unfulfilled reservation(s) left in reservation list" << endl;
     } else if (resList.does_exist() == false) {
         cout << endl<< "No more reservations left in reservation list" << endl;
     }
@@ -212,10 +211,10 @@ void ReservationSystem::list(){
 
 void ReservationSystem::terminate(){
     if (resList.does_exist() == true) {
-        cout << endl<< "There are still unfulfilled reservations left in reservation list" << endl;
+        cout << endl<< resList.get_node_count() << " unfulfilled reservation(s) left in reservation list" << endl;
     } else if (resList.does_exist() == false) {
         term = true;
-        cout << "Total number of reservations received and processed: " << res_fulfill_count << endl 
+        cout << endl << "Total number of reservations received and processed: " << res_fulfill_count << endl 
         << endl << "~~~~ Thank-you for using the Taxi Reservation System ~~~~" << endl;
     }
 }

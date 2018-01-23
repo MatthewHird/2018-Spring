@@ -2,7 +2,7 @@
 // File: res_data.h
 // Author: Matthew Hird
 // Date: January 19, 2018
-// Updated: January 20, 2018, January 21, 2018
+// Updated: January 22, 2018
 //
 // Purpose: a brief description of what's in the file
 //
@@ -21,15 +21,13 @@ private:
     string clock_time;
     string location;
     string name;
+    int time;
+
     
 public:
-    ResData();   // Constructor declaration
+    ResData(string hr, string min, string loc, string nam);   // Constructor declaration
     ~ResData();  // Deconstructor declaration
     
-    int time;
-    void in_time(string hr, string min);
-    void in_location(string loc);
-    void in_name(string nam);
-    
+    int get_time();
     void out_display();
 };

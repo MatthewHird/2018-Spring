@@ -2,7 +2,7 @@
 // File: reservation_system.h
 // Author: Matthew Hird
 // Date: January 15, 2018
-// Updated: January 19, 2018, January 20, 2018, January 21, 2018
+// Updated: January 21, 2018
 //
 // Purpose: a brief description of what's in the file
 //

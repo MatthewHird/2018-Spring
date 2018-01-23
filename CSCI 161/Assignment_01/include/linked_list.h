@@ -2,7 +2,7 @@
 // File: linked_list.h
 // Author: Matthew Hird
 // Date: January 15, 2018
-// Updated: January 19, 2018, January 20, 2018, January 21, 2018
+// Updated: January 21, 2018
 //
 // Purpose: a brief description of what's in the file
 //
@@ -33,8 +33,8 @@ public:
     void insert_chronologically(ResData * data);
     void insert_to_front(ResData * data);
     void insert_to_back(ResData * data);
-    ResData & lookup_front();
-    void delete_front();
+    void pop_front();
     void lookup_all();
-    bool does_exist();  
+    bool does_exist(); 
+    int get_node_count();
 };
