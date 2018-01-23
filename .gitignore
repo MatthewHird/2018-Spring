@@ -14,3 +14,7 @@ CSCI 161/Assignment_01/Assignment_01\.txt
 *.mk
 
 *.md
+
+*.o
+
+CSCI 161/Assignment_01/src/taxi_reservation_system

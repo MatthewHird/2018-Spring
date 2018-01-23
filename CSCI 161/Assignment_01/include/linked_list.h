@@ -2,7 +2,7 @@
 // File: linked_list.h
 // Author: Matthew Hird
 // Date: January 15, 2018
-// Updated: January 21, 2018
+// Updated: January 22, 2018
 //
 // Purpose: a brief description of what's in the file
 //

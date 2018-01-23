@@ -2,13 +2,10 @@
 // File: reservation_system.h
 // Author: Matthew Hird
 // Date: January 15, 2018
-// Updated: January 21, 2018
+// Updated: January 22, 2018
 //
-// Purpose: a brief description of what's in the file
-//
-// Notes: optional - any additional notes on the use of the file
-//
-// References: optional - a list of related reference materials
+// Purpose: Using a menu and prompts, reservation data can be submitted 
+//      and stored, and stored reservation data can be output to the user 
 //********************************************************************
 
 #pragma once
@@ -28,15 +25,15 @@ private:
     string garbage;
     string pickup_location;
     string pickup_name;
-    LinkedList resList;
-    
+    LinkedList resList;     // Declares a linked list in class scope
+                            
 public:
-    ReservationSystem();  // Constructor declaration
-    ~ReservationSystem(); // Deconstructor declaration
+    ReservationSystem();    // Constructor declaration
+    ~ReservationSystem();   // Deconstructor declaration
     
-    void menu();
-    void submit();
-    void pickup_next();
-    void list();
-    void terminate();
+    void menu();            // Starts the control menu
+    void submit();          // Propts user for data and sends the data to linked list
+    void pickup_next();     // Outputs data from the earliest reservation in the list
+    void list();            // Outputs data from each reservation in chronological order
+    void terminate();       // Outputs the number of fulfilled reservations and terminates the program
 };
