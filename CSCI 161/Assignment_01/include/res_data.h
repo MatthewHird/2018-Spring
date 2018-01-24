@@ -4,11 +4,8 @@
 // Date: January 19, 2018
 // Updated: January 22, 2018
 //
-// Purpose: a brief description of what's in the file
-//
-// Notes: optional - any additional notes on the use of the file
-//
-// References: optional - a list of related reference materials
+// Purpose: Stores taxi reservation data. Methods can return the 
+// pickup time stored as well as output the stored data to screen. 
 //********************************************************************
 
 #pragma once
@@ -26,8 +23,8 @@ private:
     
 public:
     ResData(string hr, string min, string loc, string nam);   // Constructor declaration
-    ~ResData();  // Deconstructor declaration
+    ~ResData();  // Destructor declaration
     
-    int get_time();
-    void out_display();
+    int get_time();         // Returns pickup time as a 4 digit integer (e.g. 1:30 = 0130) 
+    void out_display();     // Outputs stored data to the screen
 };

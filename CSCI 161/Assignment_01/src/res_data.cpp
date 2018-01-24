@@ -4,17 +4,15 @@
 // Date: January 19, 2018
 // Updated: January 22, 2018
 //
-// Purpose: a brief description of what's in the file
-//
-// Notes: optional - any additional notes on the use of the file
-//
-// References: optional - a list of related reference materials
+// Purpose: Stores taxi reservation data. Methods can return the 
+// pickup time stored as well as output the stored data to screen. 
 //********************************************************************
 
 #include "../include/res_data.h"
 #include <iostream>
 using namespace std;
 
+// Constructor takes in taxi reservation data as parameters and stores the valus in private member variables.
 ResData::ResData(string hr, string min, string loc, string nam){
     time = (hr[0] - '0') * 1000 + (hr[1] - '0') * 100 + (min[0] - '0') * 10 + min[1] - '0';
     clock_time = hr + ":" + min;
@@ -22,14 +20,14 @@ ResData::ResData(string hr, string min, string loc, string nam){
     name = nam;
     }
 
-ResData::~ResData()
+ResData::~ResData()             // Destructor
 {}
 
-int ResData::get_time(){
+int ResData::get_time(){        // Returns pickup time as a 4 digit integer (e.g. 1:30 = 0130)
     return time;
 }
 
-void ResData::out_display(){
+void ResData::out_display(){    // Outputs stored data to the screen
     cout << "     Pickup time: " << clock_time << endl
          << " Pickup location: " << location << endl
          << "    Contact name: " << name << endl

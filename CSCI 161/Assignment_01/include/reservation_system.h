@@ -29,7 +29,7 @@ private:
                             
 public:
     ReservationSystem();    // Constructor declaration
-    ~ReservationSystem();   // Deconstructor declaration
+    ~ReservationSystem();   // Destructor declaration
     
     void menu();            // Starts the control menu
     void submit();          // Propts user for data and sends the data to linked list

@@ -18,7 +18,7 @@ ReservationSystem::ReservationSystem(){
     res_fulfill_count = 0;              // and starts a counter of reservations processed
 }
 
-ReservationSystem::~ReservationSystem() // Deconstructor
+ReservationSystem::~ReservationSystem() // Destructor
 {}
 
 // Menu method outputs a welcome message and menu options, and prompts the user to input 

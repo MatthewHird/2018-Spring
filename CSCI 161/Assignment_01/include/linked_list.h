@@ -4,11 +4,8 @@
 // Date: January 15, 2018
 // Updated: January 22, 2018
 //
-// Purpose: a brief description of what's in the file
-//
-// Notes: optional - any additional notes on the use of the file
-//
-// References: optional - a list of related reference materials
+// Purpose: Singly linked list that creates and controls nodes that
+//      "store" data by pointing to ResData class objects.
 //********************************************************************
 
 #pragma once 
@@ -18,8 +15,8 @@
 class LinkedList
 {
 private:  
-    struct Node{
-        ResData * data;
+    struct Node{            // Declaration of the Node struct. Contains two pointers. One to the
+        ResData * data;     // data it is "storing" and one to the next node in the list
         Node * next;
     };
     Node * head;
@@ -28,13 +25,13 @@ private:
     
 public:
     LinkedList();  // Constructor declaration
-    ~LinkedList(); // Deconstructor declaration
+    ~LinkedList(); // Destructor declaration
     
-    void insert_chronologically(ResData * data);
-    void insert_to_front(ResData * data);
-    void insert_to_back(ResData * data);
-    void pop_front();
-    void lookup_all();
-    bool does_exist(); 
-    int get_node_count();
+    void insert_chronologically(ResData * data);    // Inserts data node in chronological order
+    void insert_to_front(ResData * data);           // Inserts node at the front of the list
+    void insert_to_back(ResData * data);            // Inserts node at the back of the list
+    void pop_front();       // Outputs data from the node at the front of the list, then deletes the node
+    void lookup_all();      // Outputs data from each node in the list
+    bool does_exist();      // Checks whether the list has any nodes or not
+    int get_node_count();   // Returns a count of nodes currently in the list
 };
