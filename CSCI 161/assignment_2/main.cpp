@@ -15,15 +15,33 @@
 
 #include "image.h"
 #include <fstream>
+#include <iostream>
 using namespace std;
 
 int main()
 {
-    Image img_1;
-    Image img_2;
-    Image img_3;
-    Image img_4;
-    Image img_5;
+    
+    int * alf = new int [9];
+    for (int i = 0; i < 9; i++){
+        alf[i] = i + 1;
+    }
+    
+        int * bard = new int [9];
+    for (int i = 0; i < 9; i++){
+        bard[i] = (i + 1) * 2;
+    }
+
+    string n_alf = "alf";
+    string n_bard = "bard";
+    
+    Image img_1(n_alf, 3, 3, alf);
+    Image img_2(n_bard, 3, 3, bard);
+    try{
+        Image img_3 = img_1 + img_2;
+    }
+    catch (...) {
+        
+    }
     
     return 0;
 }
