@@ -3,7 +3,7 @@
 // File: main.h
 // Author: Matthew Hird
 // Date: January 26, 2018
-// Updated: January 26, 2018
+// Updated: January 26, 2018, January 27, 2018
 //
 // Purpose: Contains a main() function to test various methods of
 //      Image class objects.
@@ -42,6 +42,38 @@ int main()
     catch (...) {
         
     }
+    
+    Image img_4 = img_1;
+    
+    if (img_4 == img_1) {
+        cout << "EQUAL" << endl;
+    }
+    if (img_1 == img_2) {
+        
+    }
+    else {
+        cout << "NOT EQUAL" << endl;
+    }
+    
+    if (img_2 != img_1) {
+        cout << "NOT EQUAL" << endl;
+    }
+    if (img_1 != img_4) {
+        
+    }
+    else {
+        cout << "EQUAL" << endl;
+    }
+    
+    img_1.histogram(16);
+    
+    cout << endl << img_1;
+    
+    Image img_5;
+    
+    cin >> img_5;
+    
+    cout <<img_5;
     
     return 0;
 }

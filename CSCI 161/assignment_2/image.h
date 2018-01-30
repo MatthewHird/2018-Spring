@@ -3,7 +3,7 @@
 // File: image.h
 // Author: Matthew Hird
 // Date: January 26, 2018
-// Updated: January 26, 2018
+// Updated: January 26, 2018, January 27, 2018
 //
 // Purpose: a brief description of what's in the file
 //
@@ -30,9 +30,10 @@ public:
     Image(const Image &old);        // Copy constructor
     ~Image();                       // Destructor
     
-    Image operator+(const Image& other);      // Overload + operator
-    void operator=(const Image& other);      // Overload = operator
-    bool operator==(const Image& other);     // Overload == operator
+    Image operator+(const Image& other);    // Overload + operator
+    void operator=(const Image& other);     // Overload = operator
+    bool operator==(const Image& other);    // Overload == operator
+    bool operator!=(const Image& other);    // Overload != operator 
     
     friend ostream& operator<<(ostream& ostr, const Image& img);   // Output Image objects
     friend istream& operator>>(istream& istr, Image& img);   // Input Image object
