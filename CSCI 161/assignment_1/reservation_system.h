@@ -11,8 +11,8 @@
 #pragma once
 #include <fstream>
 #include <sstream>
-#include "../include/linked_list.h"
-#include "../include/res_data.h"
+#include "linked_list.h"
+#include "res_data.h"
 using namespace std;
 
 class ReservationSystem

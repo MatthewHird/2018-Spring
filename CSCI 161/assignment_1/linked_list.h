@@ -9,7 +9,7 @@
 //********************************************************************
 
 #pragma once 
-#include "../include/res_data.h"
+#include "res_data.h"
 
 
 class LinkedList

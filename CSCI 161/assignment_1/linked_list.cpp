@@ -8,7 +8,7 @@
 //      "store" data by pointing to ResData class objects.
 //********************************************************************
 
-#include "../include/linked_list.h"
+#include "linked_list.h"
 #include <iostream>
 using namespace std;
 

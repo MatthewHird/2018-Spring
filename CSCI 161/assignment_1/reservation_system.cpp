@@ -8,7 +8,7 @@
 //      and stored, and stored reservation data can be output to the user
 //********************************************************************
 
-#include "../include/reservation_system.h"
+#include "reservation_system.h"
 #include <iostream>
 #include <sstream>
 using namespace std;

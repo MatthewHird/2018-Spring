@@ -10,7 +10,7 @@
 //     program exits.
 //********************************************************************
 
-#include "../include/reservation_system.h"
+#include "reservation_system.h"
 
 
 int main()

@@ -8,7 +8,7 @@
 // pickup time stored as well as output the stored data to screen. 
 //********************************************************************
 
-#include "../include/res_data.h"
+#include "res_data.h"
 #include <iostream>
 using namespace std;
 
