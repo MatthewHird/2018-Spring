@@ -131,6 +131,19 @@ ostream &operator<<(ostream& ostr, const Image& img){
 }
 
 istream &operator>>(istream& istr, Image& img){
+    istr >> img.name;
+    istr >> img.rows;
+    istr>> img.cols;
+
+    img.img_array = new int[img.rows * img.cols];
+    for (int i = 0; i < img.rows * img.cols; i++) {
+        istr >> img.img_array[i];
+    }
+    
+    return istr;
+}
+
+/*istream &operator>>(istream& istr, Image& img){
     cout << "Name >>> ";
     istr >> img.name;
     cout << "Rows >>> ";
@@ -146,7 +159,7 @@ istream &operator>>(istream& istr, Image& img){
     cout << endl;
     
     return istr;
-}
+}*/
     
 void Image::histogram(int n){
     int hist_count;

@@ -1,8 +1,8 @@
 //********************************************************************
 // File: main.cpp
 // Author: Matthew Hird
-// Date: January 15, 2018
-// Updated: January 22, 2018
+// Date: January 30, 2018
+// Updated: January 30, 2018
 //
 // Purpose: Contains main function loop. Creates a ReservationSystem
 //     class object called resSys. Calls resSys.menu() to access the
@@ -10,7 +10,7 @@
 //     program exits.
 //********************************************************************
 
-#include "../include/main.h"
+#include "../include/reservation_system.h"
 
 
 int main()

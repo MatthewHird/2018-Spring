@@ -7,24 +7,20 @@ Date: January 23, 2018
 
 	1: Files 
 
-Assignment_01/
 	README
-	src/
-		Makefile		
-		main.cpp
-		reservation_list.cpp
-		linked_list.cpp
-		res_data.cpp	
-	include/
-		main.h
-		reservation_list.h
-		linked_list.h
-		res_data.h
+	Makefile		
+	main.cpp
+	reservation_list.cpp
+	linked_list.cpp
+	res_data.cpp	
+	reservation_list.h
+	linked_list.h
+	res_data.h
 
 
 	2: Compiling and Running the Program
 
-To compile from the terminal, change directory to "Assignment_01/src". 
+To compile from the terminal, change directory to the location of the files. 
 Then enter the command "make". 
 To run the program, enter "./taxi_reservation_system".
 
