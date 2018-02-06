@@ -6,7 +6,12 @@
 // Updated: January 26, 2018, January 27, 2018, January 29, 2018
 //      February 4, 2018, February 5, 2018
 //
-// Purpose: a brief description of what's in the file
+// Purpose: The class Image is a container used to store a greyscale 
+//      image of a size ranging from 0x0 to 1024x1024 pixels, whose 
+//      pixel values range from 0 to 255. Image stores the name and 
+//      size of the image, as well as the values of the pixels that 
+//      make up the image. Some basic operators and methods can be 
+//      used to manipulate and output the data contained in Image.
 //********************************************************************
 
 #include "image.h"
@@ -23,7 +28,7 @@ Image::Image(){
     size = 0;
 }
 
-// Parametered constructor
+// Parametrized constructor
 Image::Image(string in_title, int in_row, int in_col, int * in_array){  
     name = in_title;
     rows = in_row;
@@ -52,12 +57,14 @@ Image::Image(const Image &old){
 
 // Destructor
 Image::~Image(){        
-    delete []img_array;
+    if (size != 0) {
+        delete []img_array;
+    }
 }
 
 // Overload + operator. If the number of rows or columns are different between the two
 // operand Images, a string will be thrown stating "Incompatible size". Otherwise, an 
-// Image object is returned whose name is the names of each operand seperated by " + ".
+// Image object is returned whose name is the names of each operand separated by " + ".
 // The new object's img_array values at each index are the average of the two operands'
 // values at the corresponding index.
 Image Image::operator+(const Image& other) throw(string &){
@@ -175,6 +182,10 @@ void Image::histogram(int n){
         << ": " << hist_count << endl;
     }
     cout << endl;
+}
+
+string Image::get_name(){      // Returns the name of Image
+    return name;
 }
 
 int Image::get_rows(){  // Returns the number of rows in Image

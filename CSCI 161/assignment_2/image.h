@@ -6,7 +6,12 @@
 // Updated: January 26, 2018, January 27, 2018, February 4, 2018
 //      February 5, 2018
 //
-// Purpose: a brief description of what's in the file
+// Purpose: The class Image is a container used to store a greyscale 
+//      image of a size ranging from 0x0 to 1024x1024 pixels, whose 
+//      pixel values range from 0 to 255. Image stores the name and 
+//      size of the image, as well as the values of the pixels that 
+//      make up the image. Some basic operators and methods can be 
+//      used to manipulate and output the data contained in Image.
 //********************************************************************
 
 #pragma once
@@ -24,7 +29,7 @@ private:
     
 public:
     Image();                        // Default constructor
-    Image(string in_title, int in_row, int in_col, int * in_array); //Parametered constructor
+    Image(string in_title, int in_row, int in_col, int * in_array); //Parametrized constructor
     Image(const Image &old);        // Copy constructor
     ~Image();                       // Destructor
     
@@ -51,6 +56,7 @@ public:
     friend istream& operator>>(istream& istr, Image& img);  
     
     void histogram(int n);  // Runs a histogram on the Image and outputs the results
+    string get_name();      // Returns the name of the Image
     int get_rows();         // Returns the number of rows in Image
     int get_cols();         // Returns the number of cols in Image
     int get_size();         // Returns the size of Image (rows * cols)

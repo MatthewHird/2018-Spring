@@ -39,7 +39,7 @@ int main()
         cat[i] = (i * i);
     }
 
-    Image img_alf(n_alf, 3, 3, alf);        // Tests parametered Image constructor
+    Image img_alf(n_alf, 3, 3, alf);        // Tests parametrized Image constructor
     Image img_bard(n_bard, 3, 3, bard);     // Same size as img_alf with different contents
     Image img_cat(n_cat, 4, 4, cat);        // Different size and content than other to Images
     
