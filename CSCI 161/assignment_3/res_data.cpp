@@ -1,15 +1,16 @@
 //********************************************************************
 // File: res_data.cpp
 // Author: Matthew Hird
-// Date: January 19, 2018
-// Updated: January 22, 2018
+// Date: February 6, 2018
+// Updated: 
 //
 // Purpose: Stores taxi reservation data. Methods can return the 
 // pickup time stored as well as output the stored data to screen. 
 //********************************************************************
 
-#include "../include/res_data.h"
+#include "res_data.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 // Constructor takes in taxi reservation data as parameters and stores the valus in private member variables.
@@ -32,4 +33,12 @@ void ResData::out_display(){    // Outputs stored data to the screen
          << " Pickup location: " << location << endl
          << "    Contact name: " << name << endl
          << "-------------------------------------------------------" << endl;
+}
+
+ostream& operator<<(ostream& ostr, const ResData& data){
+    
+}
+    
+istream& operator>>(istream& istr, ResData& data){
+        
 }

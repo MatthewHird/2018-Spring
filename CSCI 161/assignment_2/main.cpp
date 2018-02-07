@@ -9,7 +9,6 @@
 // Purpose: Contains a main() function to test various methods of
 //      Image class objects.
 //********************************************************************
-
 #include "image.h"
 #include <fstream>
 #include <iostream>

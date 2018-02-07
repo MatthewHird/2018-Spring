@@ -1,8 +1,8 @@
 //********************************************************************
 // File: reservation_system.h
 // Author: Matthew Hird
-// Date: January 15, 2018
-// Updated: January 22, 2018
+// Date: February 6, 2018
+// Updated: 
 //
 // Purpose: Using a menu and prompts, reservation data can be submitted 
 //      and stored, and stored reservation data can be output to the user 
@@ -11,8 +11,8 @@
 #pragma once
 #include <fstream>
 #include <sstream>
-#include "../include/linked_list.h"
-#include "../include/res_data.h"
+#include "linked_list.h"
+#include "res_data.h"
 using namespace std;
 
 class ReservationSystem
@@ -25,8 +25,9 @@ private:
     string garbage;
     string pickup_location;
     string pickup_name;
-    LinkedList resList;     // Declares a linked list in class scope
-                            
+    LinkedList todayList;     // Declares a linked list in class scope
+    LinkedList tomorrowList;
+                        
 public:
     ReservationSystem();    // Constructor declaration
     ~ReservationSystem();   // Destructor declaration

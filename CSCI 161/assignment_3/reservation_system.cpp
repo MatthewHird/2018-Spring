@@ -1,14 +1,14 @@
 //********************************************************************
 // File: reservation_system.cpp
 // Author: Matthew Hird
-// Date: January 15, 2018
-// Updated: January 22, 2018
+// Date: February 6, 2018
+// Updated: 
 //
 // Purpose: Using a menu and prompts, reservation data can be submitted 
 //      and stored, and stored reservation data can be output to the user
 //********************************************************************
 
-#include "../include/reservation_system.h"
+#include "reservation_system.h"
 #include <iostream>
 #include <sstream>
 using namespace std;
