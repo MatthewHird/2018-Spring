@@ -14,4 +14,4 @@ res_data.o: res_data.cpp res_data.h
 		g++ -c res_data.cpp
 
 clean: 
-		rm *.o taxi_reservation_system
+		-rm *.o taxi_reservation_system

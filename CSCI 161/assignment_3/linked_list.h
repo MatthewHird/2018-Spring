@@ -28,7 +28,7 @@ public:
     ~LinkedList();
     
     void push_front(ResData * data);
-    void pop_front(ResData * data);
+    ResData * pop_front();
     void pop_index(int index);
     void lookup();
     int get_node_count();

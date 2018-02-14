@@ -34,3 +34,13 @@ CSCI 161/test/Debug/
 \.codelite/
 
 CSCI 161/assignment_1/assignment_1\.txt
+
+*.sublime-project
+
+*.sublime-workspace
+
+CSCI 161/labs/lab_5
+
+CSCI 161/labs/lab_4/lab_4
+
+CSCI 161/labs/lab_3

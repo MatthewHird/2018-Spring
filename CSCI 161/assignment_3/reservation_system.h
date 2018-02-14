@@ -1,8 +1,8 @@
 //********************************************************************
 // File: reservation_system.h
 // Author: Matthew Hird
-// Date: February 6, 2018
-// Updated: 
+// Date: February 11, 2018
+// Updated: February 12, 2018, February 13, 2018
 //
 // Purpose: Using a menu and prompts, reservation data can be submitted 
 //      and stored, and stored reservation data can be output to the user 
@@ -18,23 +18,25 @@ using namespace std;
 class ReservationSystem
 {
 private:
-    int term;
-    int res_fulfill_count;
-    string pickup_hour;
-    string pickup_minute;
-    string garbage;
-    string pickup_location;
-    string pickup_name;
-    LinkedList todayList;     // Declares a linked list in class scope
-    LinkedList tomorrowList;
-                        
+	int term;
+	int res_fulfill_count;
+
+	LinkedList todayList;
+	LinkedList tomorrowList;
+
 public:
-    ReservationSystem();    // Constructor declaration
-    ~ReservationSystem();   // Destructor declaration
-    
-    void menu();            // Starts the control menu
-    void submit();          // Propts user for data and sends the data to linked list
-    void pickup_next();     // Outputs data from the earliest reservation in the list
-    void list();            // Outputs data from each reservation in chronological order
-    void terminate();       // Outputs the number of fulfilled reservations and terminates the program
+    ReservationSystem();
+    ~ReservationSystem();
+
+    void menu();
+    void submit(LinkedList day_list);
+    void pickup_next(LinkedList day_list);
+    void list_res(LinkedList day_list);
+    void terminate();
+
+    char get_char();
+    LinkedList get_list();
+    int get_time(int high, int low);
+    int get_int();
+    string get_string();
 };

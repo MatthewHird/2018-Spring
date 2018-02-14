@@ -25,7 +25,7 @@ void LinkedList::push_front(ResData * data){
     
 }
 
-void LinkedList::pop_front(ResData * data){
+ResData * LinkedList::pop_front(){
     
 }
 
