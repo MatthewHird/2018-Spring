@@ -37,6 +37,6 @@ public:
     char get_char();
     LinkedList get_list();
     int get_time(int high, int low);
-    int get_int();
+    int get_int()throw(string);
     string get_string();
 };

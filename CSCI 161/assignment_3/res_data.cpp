@@ -36,15 +36,12 @@ string ResData::display_time(){
     return oss.str();
 }
 
-/*void ResData::out_display(){    // Outputs stored data to the screen
-    cout << "     Pickup time: " << clock_time << endl
-         << " Pickup location: " << location << endl
-         << "    Contact name: " << name << endl
-         << "-------------------------------------------------------" << endl;
-}*/
-
 ostream& operator<<(ostream& ostr, const ResData& data){
-    
+    ostr << "     Pickup time: " << data.hour << ":" << data.minute << endl
+        << " Pickup location: " << data.location << endl
+        << "    Contact name: " << data.name << endl
+        << "-------------------------------------------------------" << endl;
+    return ostr;
 }
     
 istream& operator>>(istream& istr, ResData& data){

@@ -2,7 +2,7 @@
 // File: reservation_system.cpp
 // Author: Matthew Hird
 // Date: February 11, 2018
-// Updated: February 12, 2018, February 13, 2018
+// Updated: February 12, 2018, February 13, 2018, February 15, 2018
 //
 // Purpose: Using a menu and prompts, reservation data can be submitted 
 //      and stored, and stored reservation data can be output to the user
@@ -86,16 +86,25 @@ void ReservationSystem::submit(LinkedList day_list){
 }
 
 void ReservationSystem::pickup_next(LinkedList day_list){
-
+	// ResData * pickup = day_list.pop_front();
+	// cout << pickup << endl;
 }
 
 void ReservationSystem::list_res(LinkedList day_list){
-
+	// cout << day_list.lookup_all();
 }
 
 void ReservationSystem::terminate(){
-	term = true;
-	return;
+	int count = todayList.get_node_count();
+	if (count <= 0) {
+		// save tomorrowList to tomorrow_reservation.txt
+		// output "number of reservations fulfilled" + res_fulfill_count
+		term = true;
+		return;
+	} else if (count > 0) {
+		// output "cannot close" + count
+		return;
+	}
 }
 
 char ReservationSystem::get_char(){
@@ -140,7 +149,6 @@ int ReservationSystem::get_time(int low, int high){
 			in_time = this->get_int();
 			
 			if (in_time > high || in_time < low) {
-				ostringstream oss;
 				cout << "Input must be between " << low << " and " << high << endl;
 				bad_input = true;
 			}
@@ -154,7 +162,7 @@ int ReservationSystem::get_time(int low, int high){
 	return in_time;
 }
 
-int ReservationSystem::get_int(){
+int ReservationSystem::get_int()throw(string){
 	string str_form;
 	int int_form = 0;
 	getline(cin, str_form);
