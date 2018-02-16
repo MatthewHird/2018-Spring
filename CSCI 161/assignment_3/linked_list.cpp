@@ -15,7 +15,8 @@ using namespace std;
 
 
 LinkedList::LinkedList(){
-    
+	node_count = 0;
+	head = 0;   
 }
 
 LinkedList::~LinkedList(){

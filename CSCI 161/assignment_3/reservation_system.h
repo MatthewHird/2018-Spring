@@ -34,6 +34,9 @@ public:
     void list_res(LinkedList day_list);
     void terminate();
 
+    void load_reservations();
+    void save_reservations();
+
     char get_char();
     LinkedList get_list();
     int get_time(int high, int low);

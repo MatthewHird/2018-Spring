@@ -14,6 +14,14 @@
 #include <sstream>
 using namespace std;
 
+ResData::ResData(){
+    hour = 0;
+    minute = 0;
+    time = 0;
+    location = "";
+    name = "";
+}
+
 // Constructor takes in taxi reservation data as parameters and stores the valus in private member variables.
 ResData::ResData(int hr, int min, string loc, string nam){
     hour = hr;
@@ -23,6 +31,14 @@ ResData::ResData(int hr, int min, string loc, string nam){
     name = nam;
 }
 
+ResData::ResData(const ResData& old){
+    hour = old.hour;
+    minute = old.minute;
+    time = old.time;
+    location = old.location;
+    name = old.name;
+}
+
 ResData::~ResData()             // Destructor
 {}
 
@@ -30,20 +46,23 @@ int ResData::get_time(){        // Returns pickup time as a 4 digit integer (e.g
     return time;
 }
 
-string ResData::display_time(){
+string ResData::display_data(){
     ostringstream oss;
-    oss << hour << ":" << minute;
+    oss << "     Pickup time: " << hour << ":" << minute << endl
+        << " Pickup location: " << location << endl
+        << "    Contact name: " << name << endl
+        << "-------------------------------------------------------" << endl;
+    
     return oss.str();
 }
 
 ostream& operator<<(ostream& ostr, const ResData& data){
-    ostr << "     Pickup time: " << data.hour << ":" << data.minute << endl
-        << " Pickup location: " << data.location << endl
-        << "    Contact name: " << data.name << endl
-        << "-------------------------------------------------------" << endl;
+    ostr << data.hour << endl << data.minute << endl << data.location << endl << data.name << endl;
     return ostr;
 }
     
 istream& operator>>(istream& istr, ResData& data){
-        
+    istr >> data.hour >> data.minute >> data.location >> data.name;
+    data.time = 100 * data.hour + data.minute;
+    return istr;
 }

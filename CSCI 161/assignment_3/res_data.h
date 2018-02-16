@@ -24,11 +24,13 @@ private:
 
     
 public:
+    ResData();
     ResData(int hr, int min, string loc, string nam);
+    ResData(const ResData& old);
     ~ResData();
     
     int get_time(); 
-    string display_time();
+    string display_data();
     
     friend ostream& operator<<(ostream& ostr, const ResData& data);   
     friend istream& operator>>(istream& istr, ResData& data);  

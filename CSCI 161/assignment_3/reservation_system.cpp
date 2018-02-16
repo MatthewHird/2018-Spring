@@ -28,6 +28,8 @@ ReservationSystem::~ReservationSystem() // Destructor
 // should be called. If the input is invalid, the user is informed and prompted to try again.
 void ReservationSystem::menu(){
     char sel;
+
+    // this->load_reservations();
     
     cout << "~~~~ Welcome to the Taxi Reservation System ~~~~" << endl << endl;
     
@@ -91,20 +93,35 @@ void ReservationSystem::pickup_next(LinkedList day_list){
 }
 
 void ReservationSystem::list_res(LinkedList day_list){
-	// cout << day_list.lookup_all();
+	// if (day_list.get_node_count() <= 0) {
+	//     cout << "No unfulfilled reservations left in list" << endl;
+	// } 
+	// else {
+	//     cout << day_list.lookup_all() << endl;
+	// }
 }
 
 void ReservationSystem::terminate(){
 	int count = todayList.get_node_count();
 	if (count <= 0) {
-		// save tomorrowList to tomorrow_reservation.txt
-		// output "number of reservations fulfilled" + res_fulfill_count
+		// this->save_reservations();
+		cout << "Number of reservations fulfilled during this session: " << res_fulfill_count << endl
+			 << "Number of reservations saved for tomorrow: " << tomorrowList.get_node_count() << endl;
 		term = true;
 		return;
 	} else if (count > 0) {
-		// output "cannot close" + count
+		cout << "Program cannot terminate:" << endl 
+			 << count << " unfulfilled reservations left in today's list";
 		return;
 	}
+}
+
+void ReservationSystem::load_reservations(){
+
+}
+
+void ReservationSystem::save_reservations(){
+
 }
 
 char ReservationSystem::get_char(){
