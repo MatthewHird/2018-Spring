@@ -2,7 +2,7 @@
 // File: linked_list.cpp
 // Author: Matthew Hird
 // Date: February 6, 2018
-// Updated: February 15, 2018
+// Updated: February 15, 2018, February 16, 2018
 //
 // Purpose: Singly linked list that creates and controls nodes that
 //      "store" data by pointing to ResData class objects.
@@ -43,10 +43,11 @@ void LinkedList::push_chron(ResData * data){
     return;
 }
 
-ResData & LinkedList::pop_front(){
+ResData * LinkedList::pop_front(){
     Node * ptr;
     ptr = head->next;
     head->next = head->next->next;
+    node_count--;
     return ptr->data;
 }
 

@@ -2,7 +2,8 @@
 // File: reservation_system.cpp
 // Author: Matthew Hird
 // Date: February 11, 2018
-// Updated: February 12, 2018, February 13, 2018, February 15, 2018
+// Updated: February 12, 2018, February 13, 2018, February 15, 2018,
+//		February 16, 2018, February 17, 2018
 //
 // Purpose: Using a menu and prompts, reservation data can be submitted 
 //      and stored, and stored reservation data can be output to the user
@@ -12,12 +13,15 @@
 #include <math.h>
 #include <iostream>
 #include <sstream>
+#include <fstream>
 using namespace std;
 
 
 ReservationSystem::ReservationSystem(){
     term = false;                       
     res_fulfill_count = 0;
+    // res_file = "reservations.txt";
+    res_file = "res-out-test.txt";
 }              
 
 ReservationSystem::~ReservationSystem() // Destructor
@@ -29,12 +33,17 @@ ReservationSystem::~ReservationSystem() // Destructor
 void ReservationSystem::menu(){
     char sel;
 
-    // this->load_reservations();
+    cout << "~~~~ Welcome to the Taxi Reservation System ~~~~" << endl << endl; 
     
-    cout << "~~~~ Welcome to the Taxi Reservation System ~~~~" << endl << endl;
+    int loaded_res_count = this->load_reservations();
+    if (loaded_res_count == 0) {
+       	cout << "No reservations were saved for today" << endl << endl;
+    } else {
+    	cout << "Number of reservations loaded from yesterday: " << loaded_res_count << endl << endl;
+    }
     
     while (term == false){
-        cout << endl << "Please enter a key listed below:" << endl << endl
+        cout << "Please enter a key listed below:" << endl << endl
         << "     S to submit a new reservation request" << endl
         << "     P to pickup passengers with the earliest pickup time" << endl
         << "     L to list all unfulfilled reservations" << endl
@@ -45,7 +54,7 @@ void ReservationSystem::menu(){
             
         switch (sel){                   
             case 'S':
-            	cout << "Is the reservation for today (D) or tomorrow (M)?" << endl;
+            	cout << endl << "Is the reservation for today (D) or tomorrow (M)?" << endl ;
                 this->submit(this->get_list());
                 break;
                 
@@ -54,7 +63,7 @@ void ReservationSystem::menu(){
                 break;
                 
             case 'L':
-                cout << "Would you like to list the reservations for today (D) or tomorrow (M)?" << endl;
+                cout << endl << "Would you like to list the reservations for today (D) or tomorrow (M)?" << endl;
                 this->list_res(this->get_list());
                 break;
                 
@@ -63,7 +72,7 @@ void ReservationSystem::menu(){
                 break;
             
             default:
-                cout << endl << "Invalid entry: Please try again" << endl;
+                cout << endl << "Invalid entry: Please try again" << endl << endl;
                 break;
         }
     }
@@ -82,6 +91,7 @@ void ReservationSystem::submit(LinkedList * day_list){
 
 	cout << "Please enter the name of the contact" << endl;
 	string pickup_name = this->get_string();
+	cout << endl;
 
 	ResData * data = new ResData(pickup_hour, pickup_minute, pickup_location, pickup_name);
 
@@ -90,54 +100,80 @@ void ReservationSystem::submit(LinkedList * day_list){
 
 void ReservationSystem::pickup_next(){
 	if (todayList.get_node_count() <= 0) {
-	    cout << "No unfulfilled reservations left in list" << endl;
+	    cout << endl << "No unfulfilled reservations left in list" << endl << endl;
 	} 
 	else {
 		ResData * pickup = todayList.pop_front();
-		cout << pickup << endl;
+		cout << endl << pickup->display_data() << endl;
+		res_fulfill_count++;
 	}
 }
 
 void ReservationSystem::list_res(LinkedList * day_list){
 	if (day_list->get_node_count() <= 0) {
-	    cout << "No unfulfilled reservations left in list" << endl;
+	    cout << endl << "No unfulfilled reservations left in list" << endl << endl;
 	} 
 	else {
-	    cout << day_list->lookup_all() << endl;
-
+	    cout << endl << day_list->lookup_all() << endl;
 	}
 }
 
 void ReservationSystem::terminate(){
 	int count = todayList.get_node_count();
 	if (count <= 0) {
-		// this->save_reservations();
-		cout << "Number of reservations fulfilled during this session: " << res_fulfill_count << endl
-			 << "Number of reservations saved for tomorrow: " << tomorrowList.get_node_count() << endl;
+		int saved_res_count = this->save_reservations();
+		cout << endl 
+			 << "Number of reservations fulfilled during this session: " << res_fulfill_count << endl
+			 << "Number of reservations saved for tomorrow: " << saved_res_count << endl;
 		term = true;
 		return;
 	} else if (count > 0) {
-		cout << "Program cannot terminate:" << endl 
-			 << count << " unfulfilled reservations left in today's list";
+		cout << endl << "Program cannot terminate:" << endl 
+			 << count << " unfulfilled reservations left in today's list" << endl << endl;
 		return;
 	}
 }
 
-void ReservationSystem::load_reservations(){
+int ReservationSystem::load_reservations(){
+	ifstream fin;
+	fin.open(res_file.c_str());
+	if (fin.fail()) {
+		return 0;
+	}
 
+	int entry_count;
+	fin >> entry_count;
+
+	for (int i = 0; i < entry_count; i++) {
+		ResData * data = new ResData;
+		fin >> data;
+		todayList.push_chron(data);
+	}
+	fin.close();
+	return entry_count;
 }
 
-void ReservationSystem::save_reservations(){
+int ReservationSystem::save_reservations(){
+	int entry_count = tomorrowList.get_node_count();
+	ofstream fout;
+	fout.open(res_file.c_str());
+		fout << entry_count << endl;
+		for (int i = 0; i < entry_count; i++) {
+			fout << tomorrowList.pop_front();
+		}
+	fout.close();
+	return entry_count;
 
 }
 
 char ReservationSystem::get_char(){
 	char sel;
-    string garbage;
 
     cout << ">>>  ";
     cin.get(sel);                   
-    getline(cin, garbage);
+    if (sel != '\n') {
+    	cin.ignore();
+    }
     sel = toupper(sel);
     return sel;  
 }
@@ -220,5 +256,6 @@ string ReservationSystem::get_string(){
 			cout << "Input must not be left blank" << endl;
 		}
 	} while (bad_input == true);
+	
 	return str_in;
 }

@@ -1,5 +1,5 @@
-taxi_reservation_system: main.o reservation_system.o linked_list.o res_data.o
-		g++ main.o reservation_system.o linked_list.o res_data.o -o taxi_reservation_system
+pex3: main.o reservation_system.o linked_list.o res_data.o
+		g++ main.o reservation_system.o linked_list.o res_data.o -o pex3
 
 main.o: main.cpp reservation_system.h
 		g++ -c main.cpp
@@ -14,4 +14,4 @@ res_data.o: res_data.cpp res_data.h
 		g++ -c res_data.cpp
 
 clean: 
-		-rm *.o taxi_reservation_system
+		-rm *.o pex3
