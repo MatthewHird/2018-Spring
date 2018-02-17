@@ -15,6 +15,7 @@
 #include <iomanip>
 using namespace std;
 
+
 ResData::ResData(){
     hour = 0;
     minute = 0;
@@ -23,7 +24,6 @@ ResData::ResData(){
     name = "";
 }
 
-// Constructor takes in taxi reservation data as parameters and stores the valus in private member variables.
 ResData::ResData(int hr, int min, string loc, string nam){
     hour = hr;
     minute = min;
@@ -40,7 +40,7 @@ ResData::ResData(const ResData& old){
     name = old.name;
 }
 
-ResData::~ResData()             // Destructor
+ResData::~ResData()
 {}
 
 int ResData::get_time(){        // Returns pickup time as a 4 digit integer (e.g. 1:30 = 0130)

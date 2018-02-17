@@ -27,9 +27,6 @@ ReservationSystem::ReservationSystem(){
 ReservationSystem::~ReservationSystem() // Destructor
 {}
 
-// Menu method outputs a welcome message and menu options, and prompts the user to input 
-// a command (upper or lower case are both valid).  A switch statement decides what method
-// should be called. If the input is invalid, the user is informed and prompted to try again.
 void ReservationSystem::menu(){
     char sel;
 

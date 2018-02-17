@@ -16,6 +16,7 @@
 #include "res_data.h"
 using namespace std;
 
+
 class ReservationSystem
 {
 private:

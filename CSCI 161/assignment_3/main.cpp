@@ -14,17 +14,7 @@
 #include <iostream>
 using namespace std;
 
-// int main()
-// {
-//     ReservationSystem resSys;  //  Class object that contains the control logic
-    
-// 	resSys.menu();      // Starts the program menu
 
-// 	return 0;
-// }
-
-
-//test main
 int main()
 {
 	ReservationSystem resSys;
