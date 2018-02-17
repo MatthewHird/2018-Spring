@@ -20,12 +20,12 @@ using namespace std;
 class ReservationSystem
 {
 private:
-	int term;
-	int res_fulfill_count;
+    int term;
+    int res_fulfill_count;
     string res_file;
 
-	LinkedList todayList;
-	LinkedList tomorrowList;
+    LinkedList todayList;
+    LinkedList tomorrowList;
 
 public:
     ReservationSystem();

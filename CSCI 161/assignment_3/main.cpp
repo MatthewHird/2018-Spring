@@ -17,9 +17,9 @@ using namespace std;
 
 int main()
 {
-	ReservationSystem resSys;
-	
-	resSys.menu();
+    ReservationSystem resSys;
+    
+    resSys.menu();
 
-	return 0;
+    return 0;
 }
