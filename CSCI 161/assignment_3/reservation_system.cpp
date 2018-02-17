@@ -50,10 +50,11 @@ void ReservationSystem::menu(){
                 break;
                 
             case 'P':
-                this->pickup_next(this->get_list());
+                this->pickup_next();
                 break;
                 
             case 'L':
+                cout << "Would you like to list the reservations for today (D) or tomorrow (M)?" << endl;
                 this->list_res(this->get_list());
                 break;
                 
@@ -68,7 +69,7 @@ void ReservationSystem::menu(){
     }
 }
 
-void ReservationSystem::submit(LinkedList day_list){
+void ReservationSystem::submit(LinkedList * day_list){
 
 	cout << "Please enter the hour of the pickup time in 24 hour time" <<endl;
 	int pickup_hour = this->get_time(0, 23);
@@ -84,21 +85,27 @@ void ReservationSystem::submit(LinkedList day_list){
 
 	ResData * data = new ResData(pickup_hour, pickup_minute, pickup_location, pickup_name);
 
-	day_list.push_front(data);
+	day_list->push_chron(data);
 }
 
-void ReservationSystem::pickup_next(LinkedList day_list){
-	// ResData * pickup = day_list.pop_front();
-	// cout << pickup << endl;
+void ReservationSystem::pickup_next(){
+	if (todayList.get_node_count() <= 0) {
+	    cout << "No unfulfilled reservations left in list" << endl;
+	} 
+	else {
+		ResData * pickup = todayList.pop_front();
+		cout << pickup << endl;
+	}
 }
 
-void ReservationSystem::list_res(LinkedList day_list){
-	// if (day_list.get_node_count() <= 0) {
-	//     cout << "No unfulfilled reservations left in list" << endl;
-	// } 
-	// else {
-	//     cout << day_list.lookup_all() << endl;
-	// }
+void ReservationSystem::list_res(LinkedList * day_list){
+	if (day_list->get_node_count() <= 0) {
+	    cout << "No unfulfilled reservations left in list" << endl;
+	} 
+	else {
+	    cout << day_list->lookup_all() << endl;
+
+	}
 }
 
 void ReservationSystem::terminate(){
@@ -135,19 +142,22 @@ char ReservationSystem::get_char(){
     return sel;  
 }
 
-LinkedList ReservationSystem::get_list(){
+LinkedList * ReservationSystem::get_list(){
 	int bad_input = true;
 	char sel;
+	LinkedList * day_list;
 
 	do {
 		sel = this->get_char();
 
 		switch (sel){
 			case 'D':
-				return todayList;
+				day_list = &todayList;
+				return day_list;
 
 			case 'M':
-				return tomorrowList;
+				day_list = &tomorrowList;
+				return day_list;
 
 			default:
 				cout << "Entry must be either D for today or M for tomorrow" << endl;

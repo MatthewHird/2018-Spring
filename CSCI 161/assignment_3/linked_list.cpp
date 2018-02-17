@@ -16,27 +16,47 @@ using namespace std;
 
 LinkedList::LinkedList(){
 	node_count = 0;
-	head = 0;   
+	head = new Node;
+	head->next = 0;   
 }
 
 LinkedList::~LinkedList(){
-    
+    delete head;
 }
 
-void LinkedList::push_front(ResData * data){
-    
+void LinkedList::push_chron(ResData * data){
+    Node * ptr = head;
+    Node * new_node = new Node;
+    new_node->data = data; 
+    while (ptr->next != 0) {
+    	if (ptr->next->data->get_time() > new_node->data->get_time()) {
+    		new_node->next = ptr->next;
+    		ptr->next = new_node;
+    		node_count++;
+    		return;
+    	}
+    	ptr = ptr->next;
+    }
+    new_node->next = 0;
+    ptr->next = new_node;
+    node_count++;
+    return;
 }
 
-ResData * LinkedList::pop_front(){
-    
+ResData & LinkedList::pop_front(){
+    Node * ptr;
+    ptr = head->next;
+    head->next = head->next->next;
+    return ptr->data;
 }
 
 string LinkedList::lookup_all(){
     ostringstream oss;
-    Node * ptr = head;
+    Node * ptr = head->next;
     do {
-    	oss << ptr->data;
-    } while(ptr->next != 0);
+    	oss << ptr->data->display_data();
+    	ptr = ptr->next;
+    } while(ptr != 0);
     return oss.str();
 }
 
