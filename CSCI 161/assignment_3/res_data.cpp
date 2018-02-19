@@ -13,20 +13,18 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
-using namespace std;
 
 
-ResData::ResData(){
-    hour = 0;
-    minute = 0;
-    time = 0;
-    location = "";
-    name = "";
-}
+ResData::ResData()
+    : hour(0)
+    , minute(0)
+    , time(0)
+{}
 
-ResData::ResData(int hr, int min, string loc, string nam){
-    hour = hr;
-    minute = min;
+ResData::ResData(int hr, int min, const std::string& loc, const std::string& nam)
+    : hour(hr)
+    , minute(min)
+{
     time = 100 * hour + minute;
     location = loc;
     name = nam;
@@ -47,23 +45,24 @@ int ResData::get_time(){        // Returns pickup time as a 4 digit integer (e.g
     return time;
 }
 
-string ResData::display_data(){
-    ostringstream oss;
-    oss << "     Pickup time: " << setfill('0') << setw(2) << hour << ":" 
-                                << setfill('0') << setw(2) << minute << endl
-        << " Pickup location: " << location << endl
-        << "    Contact name: " << name << endl
-        << "---------------------------------------------------------------" << endl;
+std::string ResData::display_data(){
+    std::ostringstream oss;
+    oss << "     Pickup time: " << std::setfill('0') << std::setw(2) << hour << ":" 
+                                << std::setfill('0') << std::setw(2) << minute << std::endl
+        << " Pickup location: " << location << std::endl
+        << "    Contact name: " << name << std::endl
+        << "---------------------------------------------------------------" << std::endl;
     
     return oss.str();
 }
 
-ostream& operator<<(ostream& ostr, const ResData* data){
-    ostr << data->hour << " " << data->minute << endl << data->location << endl << data->name << endl;
+std::ostream& operator<<(std::ostream& ostr, const ResData* data){
+    ostr << data->hour << " " << data->minute << std::endl << data->location << std::endl 
+         << data->name << std::endl;
     return ostr;
 }
     
-istream& operator>>(istream& istr, ResData* data){
+std::istream& operator>>(std::istream& istr, ResData* data){
     istr >> data->hour; 
     istr.ignore();
     istr >> data->minute;

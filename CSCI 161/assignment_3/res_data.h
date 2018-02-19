@@ -11,7 +11,6 @@
 #pragma once
 #include <fstream>
 #include <iostream>
-using namespace std;
 
 
 class ResData
@@ -20,19 +19,19 @@ private:
     int hour;
     int minute;
     int time;
-    string location;
-    string name;
+    std::string location;
+    std::string name;
 
     
 public:
     ResData();
-    ResData(int hr, int min, string loc, string nam);
+    ResData(int hr, int min, const std::string& loc, const std::string& nam);
     ResData(const ResData& old);
     ~ResData();
     
     int get_time(); 
-    string display_data();
+    std::string display_data();
     
-    friend ostream& operator<<(ostream& ostr, const ResData * data);   
-    friend istream& operator>>(istream& istr, ResData * data);  
+    friend std::ostream& operator<<(std::ostream& ostr, const ResData* data);   
+    friend std::istream& operator>>(std::istream& istr, ResData* data);  
 };

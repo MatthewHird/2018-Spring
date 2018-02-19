@@ -11,26 +11,25 @@
 #pragma once
 #include "res_data.h"
 #include <sstream>
-using namespace std;
 
 
 class LinkedList
 {
 private:
     struct Node{
-        ResData * data;
-        Node * next;
+        ResData* data;
+        Node* next;
     };
     
-    Node * head;
+    Node* head;
     int node_count;
     
 public:
     LinkedList();
     ~LinkedList();
     
-    void push_chron(ResData * data);
-    ResData * pop_front();
-    string lookup_all();
+    void push_chron(ResData* data);
+    ResData* pop_front();
+    std::string lookup_all();
     int get_node_count();
 };
