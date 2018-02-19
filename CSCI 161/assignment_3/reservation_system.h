@@ -14,7 +14,6 @@
 #include <sstream>
 #include "linked_list.h"
 #include "res_data.h"
-using namespace std;
 
 
 class ReservationSystem
@@ -22,7 +21,7 @@ class ReservationSystem
 private:
     int term;
     int res_fulfill_count;
-    string res_file;
+    std::string res_file;
 
     LinkedList todayList;
     LinkedList tomorrowList;
@@ -32,17 +31,17 @@ public:
     ~ReservationSystem();
 
     void menu();
-    void submit(LinkedList * day_list);
+    void submit(LinkedList* day_list);
     void pickup_next();
-    void list_res(LinkedList * day_list);
+    void list_res(LinkedList* day_list);
     void terminate();
 
     int load_reservations();
     int save_reservations();
 
     char get_char();
-    LinkedList * get_list();
+    LinkedList* get_list();
     int get_time(int high, int low);
-    int get_int()throw(string);
-    string get_string();
+    int get_int()throw(std::string);
+    std::string get_string();
 };
