@@ -100,13 +100,13 @@ int main()
     cout << img_bard;
     img_bard.histogram(4);      // Tests histogram method
     
-    Image img_3;    // Tests the overloaded operator >> that is a friend to Image
-    cin >> img_3;   // Prompts user to input data and sets the Image's values to the inputs
-    cout << img_3;  // Tests the overloaded operator << that is a friend to Image
+    // Image img_3;    // Tests the overloaded operator >> that is a friend to Image
+    // cin >> img_3;   // Prompts user to input data and sets the Image's values to the inputs
+    // cout << img_3;  // Tests the overloaded operator << that is a friend to Image
     
-    cout << "Please hit enter to exit program..." << endl;
-    cin.get(); 
-    cin.get();
+    // cout << "Please hit enter to exit program..." << endl;
+    // cin.get(); 
+    // cin.get();
     
     return 0;
 }

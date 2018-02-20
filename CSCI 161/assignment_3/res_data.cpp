@@ -2,10 +2,14 @@
 // File: res_data.cpp
 // Author: Matthew Hird
 // Date: February 6, 2018
-// Updated: February 12, 2018, February 16, 2018, February 17, 2018
+// Updated: February 12, 2018, February 16, 2018, February 17, 2018, 
+//      February 18, 2018, February 19, 2018
 //
 // Purpose: Stores taxi reservation data. Methods can return the 
-// pickup time stored as well as output the stored data to screen. 
+//      pickup time stored in a comparable form, as well as return the 
+//      stored data in a formatted form. Also, the i/o stream
+//      operators have been overloaded to write stored data to a file
+//      or to accept and store data in the same format.
 //********************************************************************
 
 #include "res_data.h"
@@ -30,7 +34,8 @@ ResData::ResData(int hr, int min, const std::string& loc, const std::string& nam
     name = nam;
 }
 
-ResData::ResData(const ResData& old){
+ResData::ResData(const ResData& old)
+{
     hour = old.hour;
     minute = old.minute;
     time = old.time;
@@ -41,12 +46,16 @@ ResData::ResData(const ResData& old){
 ResData::~ResData()
 {}
 
-int ResData::get_time(){        // Returns pickup time as a 4 digit integer (e.g. 1:30 = 0130)
+int ResData::get_time()     
+{        
     return time;
 }
 
-std::string ResData::display_data(){
+// Formats data in a human readable form with headers for context
+std::string ResData::display_data()
+{
     std::ostringstream oss;
+
     oss << "     Pickup time: " << std::setfill('0') << std::setw(2) << hour << ":" 
                                 << std::setfill('0') << std::setw(2) << minute << std::endl
         << " Pickup location: " << location << std::endl
@@ -56,13 +65,23 @@ std::string ResData::display_data(){
     return oss.str();
 }
 
-std::ostream& operator<<(std::ostream& ostr, const ResData* data){
+// Streams out the data in the form:      Example:
+//
+//  hour minute\n                           23 59
+//  location\n                              123 Place Street
+//  name\n                                  Mr Client
+//                                 
+std::ostream& operator<<(std::ostream& ostr, const ResData* data)
+{
     ostr << data->hour << " " << data->minute << std::endl << data->location << std::endl 
          << data->name << std::endl;
     return ostr;
 }
-    
-std::istream& operator>>(std::istream& istr, ResData* data){
+
+// Takes data in the form listed above, and streams the values into the appropriate
+// member variables of the ResData object   
+std::istream& operator>>(std::istream& istr, ResData* data)
+{
     istr >> data->hour; 
     istr.ignore();
     istr >> data->minute;
