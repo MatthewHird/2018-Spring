@@ -1,18 +1,15 @@
-//***********************************************************************
-// File: reservation_system.cpp
-// Author: Matthew Hird
-// Date: February 11, 2018
-// Updated: February 12, 2018, February 13, 2018, February 15, 2018,
-//      February 16, 2018, February 17, 2018, February 18, 2018,
-//      February 19, 2018
+//------------------------------------------------------------------------------
+// @file reservation_system.cpp
+// @author     Matthew Hird
+// @date       February 20, 2018
 //
-// Purpose: Using a menu and prompts, reservation data can be submitted 
-//      and stored, and stored reservation data can be output to the 
-//      user. Reservations can be taken for today or tomorrow. All 
-//      reservations for tomorrow are stored in a .txt file when the
-//      program terminates. When the program starts, all reservations
-//      stored in the .txt file are saved into today's reservation list.
-//***********************************************************************      
+// @brief      Using a menu and prompts, reservation data can be submitted and
+//             stored, and stored reservation data can be output to the user.
+//             Reservations can be taken for today or tomorrow. All reservations
+//             for tomorrow are stored in a .txt file when the program
+//             terminates. When the program starts, all reservations stored in
+//             the .txt file are saved into today's reservation list.
+//------------------------------------------------------------------------------
 
 #include "reservation_system.h"
 #include <math.h>
@@ -20,7 +17,7 @@
 #include <sstream>
 #include <fstream>
 
-
+/* Default class constructor */
 ReservationSystem::ReservationSystem()
     : term(false)                       
     , res_fulfill_count(0)
@@ -28,15 +25,15 @@ ReservationSystem::ReservationSystem()
     , res_file("res-out-test.txt")
 {}              
 
+/* Class destructor */
 ReservationSystem::~ReservationSystem()
 {}
 
-// The main controller method for the program. When first called, the saved reservations are
-// loaded into today's reservation list. Then a while loop is entered that will loop until 
-// the terminate command is successfully run. The menu displays the command options available
-// and prompts the user to enter a command. Based on the input, a switch decides what action to 
-// take. Once the called method has finished, the menu options are diplayed again and the user
-// is prompted again.
+/* The main controller method for the program. When first called, the saved reservations are
+ * loaded into today's reservation list. Then a while loop is entered that will loop until 
+ * the terminate command is successfully run. The menu displays the command options available
+ * and prompts the user to enter a command.
+ */
 void ReservationSystem::menu()
 {
     char sel;
@@ -102,9 +99,10 @@ void ReservationSystem::menu()
     return;
 }
 
-// The user is prompted to input pickup information for a reservation. Once valid inputs
-// have been entered for each field, a new ResData object is created on the heap, and a 
-// pointer pointing to it is passed on to the linked list to be stored chronologically.
+/* Prompts the user to input reservation information, then stores the data in the correct list
+ * 
+ * @param day_list 
+ */
 void ReservationSystem::submit(LinkedList* day_list)
 {
     std::cout << "Please enter the hour of the pickup time in 24 hour time" <<std::endl;

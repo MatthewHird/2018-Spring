@@ -1,13 +1,12 @@
-//********************************************************************
-// File: linked_list.h
-// Author: Matthew Hird
-// Date: February 6, 2018
-// Updated: February 15, 2018, February 16, 2018, February 19, 2018
+//------------------------------------------------------------------------------
+// @file linked_list.h
+// @author     Matthew Hird
+// @date       February 20, 2018
 //
-// Purpose: A sorted, singly linked list. Nodes are inserted into the
-//      list in chronological order based on the time value of the  
-//      ResData object pointed at by each node. 
-//********************************************************************
+// @brief      A sorted, singly linked list. Nodes are inserted into the list in
+//             chronological order based on the time value of the ResData object
+//             pointed at by each node.
+//------------------------------------------------------------------------------
 
 #pragma once
 #include "res_data.h"
@@ -27,21 +26,46 @@ private:
     int node_count;
     
 public:
+    /* Default constructo */
     LinkedList();
+
+
+    /* Destructor */
     ~LinkedList();
     
-    // Inserts a node pointing to data into the list in chronological order 
-    // based on the time value of data
-    void push_chron(ResData* data); 
+
+    /**
+     * @brief      Inserts a node, that points to the data parameter, into the
+     *             list in chronological order based on the time value of data.
+     *
+     * @param      data  Pointer to the ResData object to be stored in the list.
+     */
+    void push_chron(ResData* data);
+
     
-    // Removes the first item from the list, deletes the node, and returns a pointer to the
-    // ResData that was stored
+    /**
+     * @brief      Removes the first item from the list, deletes the node, and
+     *             returns a pointer to the ResData that was stored.
+     *
+     * @return     Pointer to the ResData object that was removed from the list.
+     */
     ResData* pop_front();
     
-    // Retrieves the formatted data from each node, combines all of the data into a single
-    // string, and returns the string
+
+    /**
+     * @brief      Retrieves the formatted data from each node, combines all of
+     *             the data into a single string.
+     *
+     * @return     All of the formatted data contained in the list, concatenated
+     *             into a string.
+     */
     std::string lookup_all();
 
-    // Returns the number of real nodes in the list
+    
+    /**
+     * @brief      Gets the number of real nodes in the list.
+     *
+     * @return     node_count
+     */
     int get_node_count();
 };

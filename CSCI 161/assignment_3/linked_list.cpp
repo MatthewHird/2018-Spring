@@ -1,14 +1,12 @@
-//********************************************************************
-// File: linked_list.cpp
-// Author: Matthew Hird
-// Date: February 6, 2018
-// Updated: February 15, 2018, February 16, 2018, February 18, 2018,
-//      February 19, 2018
+//------------------------------------------------------------------------------
+// @file linked_list.cpp
+// @author     Matthew Hird
+// @date       February 20, 2018
 //
-// Purpose: A sorted, singly linked list. Nodes are inserted into the
-//      list in chronological order based on the time value of the  
-//      ResData object pointed at by each node. 
-//********************************************************************
+// @brief      A sorted, singly linked list. Nodes are inserted into the list in
+//             chronological order based on the time value of the ResData object
+//             pointed at by each node.
+//------------------------------------------------------------------------------
 
 #include "linked_list.h"
 #include <iostream>

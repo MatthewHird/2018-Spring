@@ -1,16 +1,14 @@
-//********************************************************************
-// File: res_data.cpp
-// Author: Matthew Hird
-// Date: February 6, 2018
-// Updated: February 12, 2018, February 16, 2018, February 17, 2018, 
-//      February 18, 2018, February 19, 2018
+//------------------------------------------------------------------------------
+// @file : res_data.cpp
+// @author     Matthew Hird
+// @date       February 20, 2018
 //
-// Purpose: Stores taxi reservation data. Methods can return the 
-//      pickup time stored in a comparable form, as well as return the 
-//      stored data in a formatted form. Also, the i/o stream
-//      operators have been overloaded to write stored data to a file
-//      or to accept and store data in the same format.
-//********************************************************************
+// @brief      Stores taxi reservation data. Methods can return the pickup time
+//             stored in a comparable form, as well as return the stored data in
+//             a formatted form. Also, the i/o stream operators have been
+//             overloaded to write stored data to a file or to accept and store
+//             data in the same format.
+//------------------------------------------------------------------------------
 
 #include "res_data.h"
 #include <iostream>
