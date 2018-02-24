@@ -23,6 +23,7 @@ ResData::ResData()
     , time(0)
 {}
 
+
 ResData::ResData(int hr, int min, const std::string& loc, const std::string& nam)
     : hour(hr)
     , minute(min)
@@ -31,6 +32,7 @@ ResData::ResData(int hr, int min, const std::string& loc, const std::string& nam
     location = loc;
     name = nam;
 }
+
 
 ResData::ResData(const ResData& old)
 {
@@ -41,15 +43,20 @@ ResData::ResData(const ResData& old)
     name = old.name;
 }
 
+
 ResData::~ResData()
 {}
+
 
 int ResData::get_time()     
 {        
     return time;
 }
 
-// Formats data in a human readable form with headers for context
+
+/**
+ * Formats data in a human readable form with headers for context.
+ */
 std::string ResData::display_data()
 {
     std::ostringstream oss;
@@ -63,12 +70,14 @@ std::string ResData::display_data()
     return oss.str();
 }
 
-// Streams out the data in the form:      Example:
-//
-//  hour minute\n                           23 59
-//  location\n                              123 Place Street
-//  name\n                                  Mr Client
-//                                 
+
+/** 
+ * Streams out the data in the form:      Example:
+ * 
+ * hour minute\n                          23 59
+ * location\n                             123 Place Street
+ * name\n                                 Mr Client
+ */                                 
 std::ostream& operator<<(std::ostream& ostr, const ResData* data)
 {
     ostr << data->hour << " " << data->minute << std::endl << data->location << std::endl 
@@ -76,8 +85,11 @@ std::ostream& operator<<(std::ostream& ostr, const ResData* data)
     return ostr;
 }
 
-// Takes data in the form listed above, and streams the values into the appropriate
-// member variables of the ResData object   
+
+/**
+ * Takes data in the form listed above, and streams the values into the 
+ * appropriate member variables of the ResData object.  
+ */ 
 std::istream& operator>>(std::istream& istr, ResData* data)
 {
     istr >> data->hour; 

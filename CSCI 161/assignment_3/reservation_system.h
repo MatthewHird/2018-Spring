@@ -28,12 +28,17 @@ private:
     LinkedList todayList;
     LinkedList tomorrowList;
 
+
 public:
-    /* Default constructor */
+    /**
+     * Default constructor 
+     */
     ReservationSystem();
 
     
-    /* Destructor */
+    /** 
+     * Destructor 
+     */
     ~ReservationSystem();
 
 

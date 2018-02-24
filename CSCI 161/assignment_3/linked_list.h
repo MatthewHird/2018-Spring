@@ -25,12 +25,17 @@ private:
     Node* head;
     int node_count;
     
+
 public:
-    /* Default constructo */
+    /** 
+     * Default constructor
+     */
     LinkedList();
 
 
-    /* Destructor */
+    /** 
+     * Destructor 
+     */
     ~LinkedList();
     
 

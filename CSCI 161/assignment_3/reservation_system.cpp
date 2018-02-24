@@ -17,7 +17,10 @@
 #include <sstream>
 #include <fstream>
 
-/* Default class constructor */
+
+/** 
+ * Default class constructor 
+ */
 ReservationSystem::ReservationSystem()
     : term(false)                       
     , res_fulfill_count(0)
@@ -25,11 +28,16 @@ ReservationSystem::ReservationSystem()
     , res_file("res-out-test.txt")
 {}              
 
-/* Class destructor */
+
+/** 
+ * Class destructor 
+ */
 ReservationSystem::~ReservationSystem()
 {}
 
-/* The main controller method for the program. When first called, the saved reservations are
+
+/** 
+ * The main controller method for the program. When first called, the saved reservations are
  * loaded into today's reservation list. Then a while loop is entered that will loop until 
  * the terminate command is successfully run. The menu displays the command options available
  * and prompts the user to enter a command.
@@ -99,9 +107,10 @@ void ReservationSystem::menu()
     return;
 }
 
-/* Prompts the user to input reservation information, then stores the data in the correct list
- * 
- * @param day_list 
+
+/**
+ * Prompts the user to input reservation information, then stores the data in
+ * the correct list.
  */
 void ReservationSystem::submit(LinkedList* day_list)
 {
@@ -124,10 +133,14 @@ void ReservationSystem::submit(LinkedList* day_list)
     return;
 }
 
-// If the todayList is empty, a message is displayed stating the list is empty. Otherwise,
-// it calls the pop_front() method of todayList, removing the pickup information for the next
-// reservation to be fulfilled from today's reservation list. Then the pickup data and number
-// of remaining reservations for today is displayed to the user.
+
+/**
+ * If the todayList is empty, a message is displayed stating the list is empty.
+ * Otherwise, it calls the pop_front() method of todayList, removing the pickup
+ * information for the next reservation to be fulfilled from today's reservation
+ * list. Then the pickup data and number of remaining reservations for today is
+ * displayed to the user.
+ */
 void ReservationSystem::pickup_next()
 {
     if (todayList.get_node_count() <= 0) 
@@ -154,9 +167,12 @@ void ReservationSystem::pickup_next()
 }
 
 
-// If the list if empty, a message is desplayed stating the list is empty. Otherwise,
-// it displays the pickup information for each unfulfilled reservation in the list,
-// as well as the number of reservations left in the list.
+/**
+ * If the list if empty, a message is desplayed stating the list is empty.
+ * Otherwise, it displays the pickup information for each unfulfilled
+ * reservation in the list, as well as the number of reservations left in the
+ * list.
+ */
 void ReservationSystem::list_res(LinkedList* day_list)
 {   
     int list_count = day_list->get_node_count();
@@ -179,11 +195,15 @@ void ReservationSystem::list_res(LinkedList* day_list)
     return;
 }
 
-// If todayList still contains unfulfilled reservations, a message is displayed stating the
-// program connot terminate and the number of unfulfilled reservations left in today's list.
-// Otherwise, the reservations stored in tomorrowList are saved in a .txt file, the number
-// of reservations fulfilled today are displayed, the number of reservations saved for tomorrow
-// are displayed, and the program terminates.
+
+/**
+ * If todayList still contains unfulfilled reservations, a message is displayed
+ * stating the program connot terminate and the number of unfulfilled
+ * reservations left in today's list. Otherwise, the reservations stored in
+ * tomorrowList are saved in a .txt file, the number of reservations fulfilled
+ * today are displayed, the number of reservations saved for tomorrow are
+ * displayed, and the program terminates.
+ */
 void ReservationSystem::terminate()
 {
     int count = todayList.get_node_count();
@@ -207,12 +227,17 @@ void ReservationSystem::terminate()
     }  
 }
 
-// Opens a .txt file containing saved data. The first entry read is a count of the number of 
-// ResData objects whose data has been stored in the file. If the file fails to open, it is 
-// assumed that no contents were saved, and a count of 0 is returned. Otherwise, a for loop
-// is cycled through an entry_count number of times. Each cycle, it generates a pointer to a
-// new ResData object on the heap, then streams the next section of data into the ResData object,
-// and passes the pointer to today's reservation list to be stored in chronological order.
+
+/**
+ * Opens a .txt file containing saved data. The first entry read is a count of
+ * the number of ResData objects whose data has been stored in the file. If the
+ * file fails to open, it is assumed that no contents were saved, and a count of
+ * 0 is returned. Otherwise, a for loop is cycled through an entry_count number
+ * of times. Each cycle, it generates a pointer to a new ResData object on the
+ * heap, then streams the next section of data into the ResData object, and
+ * passes the pointer to today's reservation list to be stored in chronological
+ * order.
+ */
 int ReservationSystem::load_reservations()
 {
     int entry_count;
@@ -238,11 +263,15 @@ int ReservationSystem::load_reservations()
     return entry_count;
 }
 
-// Opens a .txt file and saves the contents of each ResData object in tomorrow's reservation 
-// list. The node count in tomorrowList is written to the first line to state how many sets of
-// ResData contents are saved in the file. Then, a for loop is cycled through an entry_count 
-// number of times. Each cycle, the ResData at the front of tomorrow's list is popped, and its
-// contents are written to the .txt file. 
+
+/**
+ * Opens a .txt file and saves the contents of each ResData object in tomorrow's
+ * reservation list. The node count in tomorrowList is written to the first line
+ * to state how many sets of ResData contents are saved in the file. Then, a for
+ * loop is cycled through an entry_count number of times. Each cycle, the
+ * ResData at the front of tomorrow's list is popped, and its contents are
+ * written to the .txt file.
+ */
 int ReservationSystem::save_reservations()
 {
     int entry_count = tomorrowList.get_node_count();
@@ -260,11 +289,16 @@ int ReservationSystem::save_reservations()
     return entry_count;
 }
 
-// Takes a character input in from the user. If the user enters 1 or more characters and hits
-// enter, cin puts the first character in the input string into sel, and a '\n' character is 
-// left hanging, so cin.ignore() is called to throw it away. If the user hits enter without
-// inputting any characters, cin puts '\n' into sel, and cin.ignore() is not called as no '\n'
-// character is left hanging. The input character is then converted to uppercase and returned.
+
+/**
+ * Takes a character input in from the user. If the user enters 1 or more
+ * characters and hits enter, cin puts the first character in the input string
+ * into sel, and a '\n' character is left hanging, so cin.ignore() is called to
+ * throw it away. If the user hits enter without inputting any characters, cin
+ * puts '\n' into sel, and cin.ignore() is not called as no '\n' character is
+ * left hanging. The input character is then converted to uppercase and
+ * returned.
+ */
 char ReservationSystem::get_char()
 {
     char sel;
@@ -281,10 +315,14 @@ char ReservationSystem::get_char()
     return sel;  
 }
 
-// A character input is taken in from the user. If the character is not a valid command, a 
-// message is displayed stating what the valid commands are, and the do/while loop loops back 
-// and the user is prompted to input a character again. If the input character is valid, a
-// reference to the corrosponding list is returned.
+
+/**
+ * A character input is taken in from the user. If the character is not a valid
+ * command, a message is displayed stating what the valid commands are, and the
+ * do/while loop loops back and the user is prompted to input a character again.
+ * If the input character is valid, a reference to the corrosponding list is
+ * returned.
+ */
 LinkedList* ReservationSystem::get_list()
 {
     int bad_input = true;
@@ -316,12 +354,16 @@ LinkedList* ReservationSystem::get_list()
     return day_list;
 }
 
-// The user is prompted to input an integer value that is with in the range of the arguments
-// 'low' and 'high'. When the get_int() method is called, if the user entered a non-integer 
-// input, get_int() will throw an std::string containing an error message, which get_time()
-// catches and displays. When an integer is returned, if it is outside the valid range, a 
-// message is displayed stating the valid range. The input cycle loops until a valid value is
-// entered, at which point the value is returned.
+
+/**
+ * The user is prompted to input an integer value that is with in the range of
+ * the arguments 'low' and 'high'. When the get_int() method is called, if the
+ * user entered a non-integer input, get_int() will throw an std::string
+ * containing an error message, which get_time() catches and displays. When an
+ * integer is returned, if it is outside the valid range, a message is displayed
+ * stating the valid range. The input cycle loops until a valid value is
+ * entered, at which point the value is returned.
+ */
 int ReservationSystem::get_time(int low, int high)
 {
     int bad_input;
@@ -352,13 +394,18 @@ int ReservationSystem::get_time(int low, int high)
     return in_time;
 }
 
-// std::getline() is used to read the user's input. If the input string is empty, a string is 
-// thrown stating the input may not be left blank. If the string is 1 or more characters long, 
-// each character is checked to see if it a digit (ie between '0' and '9'). If a digit is not,
-// a string is thrown stating the input must be an integer. If the characters are valid digits,
-// each character is converted into the appropriate integer value, and multipled by the correct
-// power of 10 so it will end up in the correct place value. All of these values are then added
-// together, and the resulting integer value is returned.
+
+/**
+ * std::getline() is used to read the user's input. If the input string is
+ * empty, a string is thrown stating the input may not be left blank. If the
+ * string is 1 or more characters long, each character is checked to see if it a
+ * digit (ie between '0' and '9'). If a digit is not, a string is thrown stating
+ * the input must be an integer. If the characters are valid digits, each
+ * character is converted into the appropriate integer value, and multipled by
+ * the correct power of 10 so it will end up in the correct place value. All of
+ * these values are then added together, and the resulting integer value is
+ * returned.
+ */
 int ReservationSystem::get_int()throw(std::string)
 {
     std::string str_form;
@@ -385,9 +432,13 @@ int ReservationSystem::get_int()throw(std::string)
     return int_form;
 }
 
-// std::getline() takes in a string from the user. If the input string is empty, a message
-// stating the input must not be left blank is displayed, and the input loop cycles through 
-// again. If the string contains any characters, the entire string is returned. 
+
+/**
+ * std::getline() takes in a string from the user. If the input string is empty,
+ * a message stating the input must not be left blank is displayed, and the
+ * input loop cycles through again. If the string contains any characters, the
+ * entire string is returned.
+ */
 std::string ReservationSystem::get_string()
 {
     int bad_input;
