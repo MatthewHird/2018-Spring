@@ -27,10 +27,11 @@ LinkedList::~LinkedList()
 }
 
 
-// Takes in a ResData pointer as a parameter and creates a new node to point at
-// it. The node is then inserted into the list in chronological order based on
-// the time value of the ResData objects.
-//
+/**
+ * Takes in a ResData pointer as a parameter and creates a new node to point at
+ * it. The node is then inserted into the list in chronological order based on
+ * the time value of the ResData objects.
+ */
 void LinkedList::push_chron(ResData* data)
 {
     Node* ptr = head;
@@ -57,9 +58,10 @@ void LinkedList::push_chron(ResData* data)
 }
 
 
-// Removes the first node from the list, deletes the node, and returns a pointer
-// to the data.
-//
+/**
+ * Removes the first node from the list, deletes the node, and returns a pointer
+ * to the data.
+ */
 ResData* LinkedList::pop_front()
 {
     Node* ptr = head->next;
@@ -71,9 +73,10 @@ ResData* LinkedList::pop_front()
 }
 
 
-// Goes through the nodes in order and retrieves the formatted data of each. All
-// of the data is streamed into one object, and is returned as a single string. 
-// 
+/**
+ * Goes through the nodes in order and retrieves the formatted data of each. All
+ * of the data is streamed into one object, and is returned as a single string.
+ */
 std::string LinkedList::lookup_all()
 {
     std::ostringstream oss;

@@ -36,11 +36,12 @@ ReservationSystem::~ReservationSystem()
 {}
 
 
-/** 
- * The main controller method for the program. When first called, the saved reservations are
- * loaded into today's reservation list. Then a while loop is entered that will loop until 
- * the terminate command is successfully run. The menu displays the command options available
- * and prompts the user to enter a command.
+/**
+ * The main controller method for the program. When first called, the saved
+ * reservations are loaded into today's reservation list. Then a while loop is
+ * entered that will loop until the terminate command is successfully run. The
+ * menu displays the command options available and prompts the user to enter a
+ * command.
  */
 void ReservationSystem::menu()
 {
@@ -198,7 +199,7 @@ void ReservationSystem::list_res(LinkedList* day_list)
 
 /**
  * If todayList still contains unfulfilled reservations, a message is displayed
- * stating the program connot terminate and the number of unfulfilled
+ * stating the program cannot terminate and the number of unfulfilled
  * reservations left in today's list. Otherwise, the reservations stored in
  * tomorrowList are saved in a .txt file, the number of reservations fulfilled
  * today are displayed, the number of reservations saved for tomorrow are

@@ -1,0 +1,387 @@
+~~~~ Welcome to the Taxi Reservation System ~~~~
+
+No reservations were saved for today
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  p
+
+No unfulfilled reservations left in list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  l
+
+Would you like to list the reservations for today (D) or tomorrow (M)?
+>>>  d
+
+No unfulfilled reservations left in list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  s
+
+Is the reservation for today (D) or tomorrow (M)?
+>>>  d
+Please enter the hour of the pickup time in 24 hour time
+>>>  25
+Input must be between 0 and 23
+>>>  d
+Input must be a positive integer
+>>>  -10
+Input must be a positive integer
+>>>  5
+Please enter the minute of the pickup time
+>>>  111
+Input must be between 0 and 59
+>>>  aaaa
+Input must be a positive integer
+>>>  2
+Please enter the pickup location
+>>>  
+Input must not be left blank
+>>>  Road Street
+Please enter the name of the contact
+>>>  
+Input must not be left blank
+>>>  Dave
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  t
+
+Program cannot terminate:
+1 unfulfilled reservation(s) left in today's list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  s
+
+Is the reservation for today (D) or tomorrow (M)?
+>>>  d
+Please enter the hour of the pickup time in 24 hour time
+>>>  23
+Please enter the minute of the pickup time
+>>>  59
+Please enter the pickup location
+>>>  Place
+Please enter the name of the contact
+>>>  Name
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  s
+
+Is the reservation for today (D) or tomorrow (M)?
+>>>  d
+Please enter the hour of the pickup time in 24 hour time
+>>>  11
+Please enter the minute of the pickup time
+>>>  11
+Please enter the pickup location
+>>>  Road Ave
+Please enter the name of the contact
+>>>  Mr Man
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  s
+
+Is the reservation for today (D) or tomorrow (M)?
+>>>  m
+Please enter the hour of the pickup time in 24 hour time
+>>>  14
+Please enter the minute of the pickup time
+>>>  30
+Please enter the pickup location
+>>>  Park Place
+Please enter the name of the contact
+>>>  Mr Penniesworth                   
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  s
+
+Is the reservation for today (D) or tomorrow (M)?
+>>>  m
+Please enter the hour of the pickup time in 24 hour time
+>>>  0
+Please enter the minute of the pickup time
+>>>  0
+Please enter the pickup location
+>>>  Null
+Please enter the name of the contact
+>>>  Undefined
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  l
+
+Would you like to list the reservations for today (D) or tomorrow (M)?
+>>>  d
+
+     Pickup time: 05:02
+ Pickup location: Road Street
+    Contact name: Dave
+---------------------------------------------------------------
+     Pickup time: 11:11
+ Pickup location: Road Ave
+    Contact name: Mr Man
+---------------------------------------------------------------
+     Pickup time: 23:59
+ Pickup location: Place
+    Contact name: Name
+---------------------------------------------------------------
+
+3 unfulfilled reservation(s) left in list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  l
+
+Would you like to list the reservations for today (D) or tomorrow (M)?
+>>>  m
+
+     Pickup time: 00:00
+ Pickup location: Null
+    Contact name: Undefined
+---------------------------------------------------------------
+     Pickup time: 14:30
+ Pickup location: Park Place
+    Contact name: Mr Penniesworth
+---------------------------------------------------------------
+
+2 unfulfilled reservation(s) left in list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  p
+
+     Pickup time: 05:02
+ Pickup location: Road Street
+    Contact name: Dave
+---------------------------------------------------------------
+This pickup information has been passed to an available driver
+
+2 unfulfilled reservation(s) left in today's list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  p
+
+     Pickup time: 11:11
+ Pickup location: Road Ave
+    Contact name: Mr Man
+---------------------------------------------------------------
+This pickup information has been passed to an available driver
+
+1 unfulfilled reservation(s) left in today's list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  p
+
+     Pickup time: 23:59
+ Pickup location: Place
+    Contact name: Name
+---------------------------------------------------------------
+This pickup information has been passed to an available driver
+
+0 unfulfilled reservation(s) left in today's list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  p
+
+No unfulfilled reservations left in list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  t
+
+Number of reservations fulfilled during this session: 3
+Number of reservations saved for tomorrow: 2
+
+################################################################################
+
+~~~~ Welcome to the Taxi Reservation System ~~~~
+
+Number of reservations loaded from yesterday: 2
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  l
+
+Would you like to list the reservations for today (D) or tomorrow (M)?
+>>>  d
+
+     Pickup time: 00:00
+ Pickup location: Null
+    Contact name: Undefined
+---------------------------------------------------------------
+     Pickup time: 14:30
+ Pickup location: Park Place
+    Contact name: Mr Penniesworth
+---------------------------------------------------------------
+
+2 unfulfilled reservation(s) left in list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  l
+
+Would you like to list the reservations for today (D) or tomorrow (M)?
+>>>  m
+
+No unfulfilled reservations left in list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  p
+
+     Pickup time: 00:00
+ Pickup location: Null
+    Contact name: Undefined
+---------------------------------------------------------------
+This pickup information has been passed to an available driver
+
+1 unfulfilled reservation(s) left in today's list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  p
+
+     Pickup time: 14:30
+ Pickup location: Park Place
+    Contact name: Mr Penniesworth
+---------------------------------------------------------------
+This pickup information has been passed to an available driver
+
+0 unfulfilled reservation(s) left in today's list
+
+Please enter a key listed below:
+
+     S to submit a new reservation request
+     P to pickup passengers with the earliest pickup time
+     L to list all unfulfilled reservations
+     T to terminate this program (if reservation list is empty)
+
+---------------------------------------------------------------
+>>>  t
+
+Number of reservations fulfilled during this session: 2
+Number of reservations saved for tomorrow: 0
