@@ -27,10 +27,7 @@ BrowserSim::~BrowserSim()
 
 void BrowserSim::run(char* start_url)
 {
-    Stack last;
-    Stack next;
     current_url = start_url;
-
     this->menu();
 }
 
@@ -43,11 +40,29 @@ void BrowserSim::menu()
     
     while (term == false)
     {
-        std::cout << current_url << "\n"
+        // try
+        // {
+        //     std::cout << "last: " << last.peek().url << "\n";
+        // }
+        // catch (EmptyStack& e)
+        // {
+        //     std::cout << "last: EMPTY" << "\n";
+        // }
+        
+        // try
+        // {
+        //     std::cout << "next: " << next.peek().url << "\n";
+        // }
+        // catch (EmptyStack& e)
+        // {
+        //     std::cout << "next: EMPTY" << "\n";
+        // }
+
+        std::cout << "Current page: " << current_url << "\n"
                   << "command>>>  ";
 
         command = this->get_command();
-        std::cout << command[0] << "\n";
+        std::cout << "\n";
 
         try
         {
@@ -58,9 +73,11 @@ void BrowserSim::menu()
                     {
                         throw InvalidArguments();
                     }
-
-                    std::cout << command[1] << "\n";
-
+                    cur_data = new Data;
+                    cur_data->url = current_url;
+                    last.push(*cur_data);
+                    next.clear();
+                    current_url = command[1];
                     break;
 
                 case 2: // "back"
@@ -69,6 +86,21 @@ void BrowserSim::menu()
                         throw InvalidArguments();
                     }
 
+                    if (last.is_empty())
+                    {
+                        std::cout << "Cannot move back:\n"
+                                  << "No previous page to load\n"
+                                  << "\n";
+                    }
+                    else
+                    {
+                        cur_data = new Data;
+                        cur_data->url = current_url;
+                        next.push(*cur_data);
+                        *cur_data = last.pop();
+                        current_url = cur_data->url;
+                        delete cur_data;
+                    }
                     break;
 
                 case 3: // "forward"
@@ -77,6 +109,21 @@ void BrowserSim::menu()
                         throw InvalidArguments();
                     }
 
+                    if (next.is_empty())
+                    {
+                        std::cout << "Cannot move forward:\n"
+                                  << "No forward page to load\n"
+                                  << "\n";
+                    }
+                    else
+                    {
+                        cur_data = new Data;
+                        cur_data->url = current_url;
+                        last.push(*cur_data);
+                        *cur_data = next.pop();
+                        current_url = cur_data->url;
+                        delete cur_data;
+                    }
                     break;
 
                 case 4: // "exit"
@@ -89,14 +136,14 @@ void BrowserSim::menu()
                     break;
 
                 default:
-                    std::cout << "dancing puppies\n";
-                    break;
+                    throw InvalidArguments();
             }
         }
         catch (InvalidArguments& e)
         {
             std::cout << "error invalid arguments\n";
         }
+        command.clear();
     }
 }
 

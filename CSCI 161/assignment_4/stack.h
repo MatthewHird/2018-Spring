@@ -9,13 +9,10 @@
 #pragma once
 #include "my_exceptions.h"
 
-
+template <class Data>
 class Stack
 {
 private:
-    struct Data 
-    {};
-
     struct Node
     {
         Data* data;
@@ -23,7 +20,6 @@ private:
     };
     
     Node* head;
-    int node_count;
 
 public:
     Stack();
@@ -34,7 +30,7 @@ public:
     Data& peek()throw(EmptyStack);
 
     bool is_empty();
-    int get_size();
-
-    void empty();
+    void clear();
 };
+
+#include "stack.inl"

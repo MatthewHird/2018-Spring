@@ -10,12 +10,21 @@
 #include <iostream>     
 #include <vector>
 #include <map>
+#include "stack.h"
 
 
 class BrowserSim
 {
 private:
+    struct Data
+    {
+        std::string url;
+    };
+    
+    Stack<Data> last;
+    Stack<Data> next;
     std::string current_url;
+    Data* cur_data;
 
 public:
     BrowserSim();
