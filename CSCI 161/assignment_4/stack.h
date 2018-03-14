@@ -12,25 +12,24 @@
 template <class Data>
 class Stack
 {
-private:
-    struct Node
-    {
-        Data* data;
-        Node* next;
-    };
-    
-    Node* head;
-
 public:
     Stack();
     ~Stack();
 
-    void push(Data& data);
-    Data& pop()throw(EmptyStack);
-    Data& peek()throw(EmptyStack);
+    void push(const Data& data);
+    Data pop()throw(EmptyStack);
+    const Data& peek()throw(EmptyStack);
 
     bool is_empty();
     void clear();
+
+private:
+    struct Node
+    {
+        Data data;
+        Node* next;
+    };
+    Node* head;
 };
 
 #include "stack.inl"

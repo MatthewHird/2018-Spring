@@ -40,23 +40,23 @@ void BrowserSim::menu()
     
     while (term == false)
     {
-        // try
-        // {
-        //     std::cout << "last: " << last.peek().url << "\n";
-        // }
-        // catch (EmptyStack& e)
-        // {
-        //     std::cout << "last: EMPTY" << "\n";
-        // }
+        try
+        {
+            std::cout << "last: " << last.peek() << "\n";
+        }
+        catch (EmptyStack& e)
+        {
+            std::cout << "last: EMPTY" << "\n";
+        }
         
-        // try
-        // {
-        //     std::cout << "next: " << next.peek().url << "\n";
-        // }
-        // catch (EmptyStack& e)
-        // {
-        //     std::cout << "next: EMPTY" << "\n";
-        // }
+        try
+        {
+            std::cout << "next: " << next.peek() << "\n";
+        }
+        catch (EmptyStack& e)
+        {
+            std::cout << "next: EMPTY" << "\n";
+        }
 
         std::cout << "Current page: " << current_url << "\n"
                   << "command>>>  ";
@@ -73,9 +73,7 @@ void BrowserSim::menu()
                     {
                         throw InvalidArguments();
                     }
-                    cur_data = new Data;
-                    cur_data->url = current_url;
-                    last.push(*cur_data);
+                    last.push(current_url);
                     next.clear();
                     current_url = command[1];
                     break;
@@ -94,12 +92,8 @@ void BrowserSim::menu()
                     }
                     else
                     {
-                        cur_data = new Data;
-                        cur_data->url = current_url;
-                        next.push(*cur_data);
-                        *cur_data = last.pop();
-                        current_url = cur_data->url;
-                        delete cur_data;
+                        next.push(current_url);
+                        current_url = last.pop();
                     }
                     break;
 
@@ -117,12 +111,8 @@ void BrowserSim::menu()
                     }
                     else
                     {
-                        cur_data = new Data;
-                        cur_data->url = current_url;
-                        last.push(*cur_data);
-                        *cur_data = next.pop();
-                        current_url = cur_data->url;
-                        delete cur_data;
+                        last.push(current_url);
+                        current_url = next.pop();
                     }
                     break;
 

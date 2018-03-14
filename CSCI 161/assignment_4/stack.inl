@@ -25,10 +25,10 @@ Stack<Data>::~Stack()
 
 
 template<class Data>
-void Stack<Data>::push(Data& data)
+void Stack<Data>::push(const Data& data)
 {
     Node* ptr = new Node;
-    ptr->data = &data;
+    ptr->data = data;
 
     ptr->next = head;
     head = ptr;
@@ -36,7 +36,7 @@ void Stack<Data>::push(Data& data)
 
 
 template<class Data>
-Data& Stack<Data>::pop()throw(EmptyStack)
+Data Stack<Data>::pop()throw(EmptyStack)
 {
     if (this->is_empty())
     {
@@ -44,23 +44,22 @@ Data& Stack<Data>::pop()throw(EmptyStack)
     }
     
     Node* ptr = head;
-    Data& data = *(head->data);
+    Data data = head->data;
     head = head->next;
-    ptr->data = nullptr;
     delete ptr;
     return data;
 }
 
 
 template<class Data>
-Data& Stack<Data>::peek()throw(EmptyStack)
+const Data& Stack<Data>::peek()throw(EmptyStack)
 {
     if (this->is_empty())
     {
         throw EmptyStack();
     }
     
-    return *(head->data);
+    return head->data;
 }
 
 

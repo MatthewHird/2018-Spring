@@ -15,17 +15,6 @@
 
 class BrowserSim
 {
-private:
-    struct Data
-    {
-        std::string url;
-    };
-    
-    Stack<Data> last;
-    Stack<Data> next;
-    std::string current_url;
-    Data* cur_data;
-
 public:
     BrowserSim();
     ~BrowserSim();
@@ -35,4 +24,9 @@ public:
 
     std::vector<std::string> get_command();
     std::map<std::string, int> get_cmd_map();
+
+private:
+    Stack<std::string> last;
+    Stack<std::string> next;
+    std::string current_url;
 };
