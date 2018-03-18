@@ -1,9 +1,12 @@
 //------------------------------------------------------------------------------
-// @file main.cpp
+// @file       main.cpp
 // @author     Matthew Hird
-// @date       March 5, 2018
+// @date       March 17, 2018
 //
-// @brief      
+// @brief      The main function for the program pex4. Run the program in the
+//             terminal as "pex4 <start_url>". Invalid arguments will output an 
+//             error message and terminate the program. Otherwise, the program 
+//             is passed off to the BrowserSim controller class.
 //------------------------------------------------------------------------------
 
 #include <iostream>

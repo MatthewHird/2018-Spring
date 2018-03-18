@@ -1,12 +1,13 @@
 //------------------------------------------------------------------------------
-// @file stack.cpp
+// @file       stack.inl
 // @author     Matthew Hird
-// @date       March 5, 2018
+// @date       March 17, 2018
 //
-// @brief      
+// @brief      Implementation of the templated class Stack. Contains basic 
+//             public methods typical of a stack (push, pop, peek, is_empty, 
+//             and clear). The stack is implemented using a singly linked list.     
 //------------------------------------------------------------------------------
 
-#include "stack.h"
 #include "my_exceptions.h"
 
 
@@ -20,7 +21,10 @@ Stack<Data>::Stack()
 template<class Data>
 Stack<Data>::~Stack()
 {
-
+    while (! is_empty())
+    {
+        pop();
+    }
 }
 
 
@@ -38,7 +42,7 @@ void Stack<Data>::push(const Data& data)
 template<class Data>
 Data Stack<Data>::pop()throw(EmptyStack)
 {
-    if (this->is_empty())
+    if (is_empty())
     {
         throw EmptyStack();
     }
@@ -54,7 +58,7 @@ Data Stack<Data>::pop()throw(EmptyStack)
 template<class Data>
 const Data& Stack<Data>::peek()throw(EmptyStack)
 {
-    if (this->is_empty())
+    if (is_empty())
     {
         throw EmptyStack();
     }
@@ -70,12 +74,11 @@ bool Stack<Data>::is_empty()
 }
 
 
-
 template<class Data>
 void Stack<Data>::clear()
 {
     while (! is_empty())
     {
-        this->pop();
+        pop();
     }
 }

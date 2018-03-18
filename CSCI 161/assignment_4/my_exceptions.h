@@ -1,21 +1,42 @@
 //------------------------------------------------------------------------------
-// @file my_exceptions.h
+// @file       my_exceptions.h
 // @author     Matthew Hird
-// @date       March 9, 2018
+// @date       March 17, 2018
 //
-// @brief      
+// @brief      The declaration and implementation of custom exception classes
+//             used in pex4.
 //------------------------------------------------------------------------------
 
 #pragma once
+#include <exception>
 
-class EmptyStack
+
+class EmptyStack : public std::exception
 {
-
+public:
+    /**
+     * @brief      Returns a null terminated error message.
+     *
+     * @return     Error message.
+     */
+    const char* what() const throw()
+    {
+        return "Error: Stack is empty\n";
+    };
 };
 
 
-
-class InvalidArguments
+class InvalidArguments : public std::exception
 {
-
+public:
+    
+    /**
+     * @brief      Returns a null terminated error message.
+     *
+     * @return     Error message.
+     */
+    const char* what() const throw()
+    {
+        return "Error: Invalid arguments\n";
+    };
 };
