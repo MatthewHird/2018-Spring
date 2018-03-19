@@ -1,0 +1,96 @@
+hirdm@home ~/assignment_4 $ ./pex4
+
+Invlaid arguments:
+pex4 takes a single URL as its only argument
+
+hirdm@home ~/assignment_4 $ ./pex4 start.url.org argument
+
+Invlaid arguments:
+pex4 takes a single URL as its only argument
+
+hirdm@home ~/assignment_4 $ ./pex4 start.url.org
+
+~~~~ Welcome to the Web Browser Simulation ~~~~
+
+Current page: start.url.org
+command>>>  back
+
+Cannot move back:
+No previous page to load
+
+Current page: start.url.org
+command>>>  forward
+
+Cannot move forward:
+No forward page to load
+
+Current page: start.url.org
+command>>>  
+
+Error: Invalid arguments
+
+Current page: start.url.org
+command>>>  back forward
+
+Error: Invalid arguments
+
+Current page: start.url.org
+command>>>  click
+
+Error: Invalid arguments
+
+Current page: start.url.org
+command>>>  click google.ca
+
+Current page: google.ca
+command>>>  click facebook.com
+
+Current page: facebook.com
+command>>>  back
+
+Current page: google.ca
+command>>>  back
+
+Current page: start.url.org
+command>>>  back
+
+Cannot move back:
+No previous page to load
+
+Current page: start.url.org
+command>>>  forward
+
+Current page: google.ca
+command>>>  forward
+
+Current page: facebook.com
+command>>>  forward
+
+Cannot move forward:
+No forward page to load
+
+Current page: facebook.com
+command>>>  back
+
+Current page: google.ca
+command>>>  click github.com
+
+Current page: github.com
+command>>>  forward
+
+Cannot move forward:
+No forward page to load
+
+Current page: github.com
+command>>>  back
+
+Current page: google.ca
+command>>>        back      
+
+Current page: start.url.org
+command>>>      click      yahoo.ca   
+
+Current page: yahoo.ca
+command>>>  exit
+
+hirdm@home ~/assignment_4 $ 

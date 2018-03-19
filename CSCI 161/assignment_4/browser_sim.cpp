@@ -34,7 +34,6 @@ void BrowserSim::run(char* start_url)
 }
 
 
-
 /**
  * Menu loops until the terminate command "exit" is given. Prompts user for
  * input command, then calls get_command() to retrieve and parse the command. A
@@ -49,6 +48,10 @@ void BrowserSim::menu()
     int term = false;
     std::vector<std::string> command;
     
+    std::cout << "\n"
+              << "~~~~ Welcome to the Web Browser Simulation ~~~~\n"
+              << "\n";
+
     while (term == false)
     {
         std::cout << "Current page: " << current_url << "\n"
@@ -191,5 +194,3 @@ std::map<std::string, int> BrowserSim::get_cmd_map()
 
     return cmd_map;
 }
-
-
