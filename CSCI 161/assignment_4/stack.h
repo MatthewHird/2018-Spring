@@ -87,4 +87,4 @@ private:
     Node* head;
 };
 
-#include "stack.inl"
+#include "stack.inl.h"
