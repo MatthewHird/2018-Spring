@@ -1,19 +1,28 @@
 //------------------------------------------------------------------------------
-// @file       main.cpp
+// @file       my_exceptions.h
 // @author     Matthew Hird
 // @date       April 1, 2018
 //
 // @brief      The main function for the program pex5.
 //------------------------------------------------------------------------------
 
-#include <iostream>
-#include "wiki_country.h"
+#pragma once
+#include <exception>
 
 
-int main(int argc, char* argv[])
+class FullContainer
 {
-    WikiCountry wikiCountry;
-    wikiCountry.run();
+public:
 
-    return 0;
-}
+private:
+
+};
+
+
+class EmptyContainer
+{
+public:
+
+private:
+
+};
