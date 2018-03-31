@@ -10,6 +10,7 @@
 #include <iostream>
 #include "dictionary.h"
 #include "country_data.h"
+#include "str_key.h"
 
 
 class WikiCountry
@@ -26,15 +27,19 @@ private:
     void remove();
     void add();
     void update();
-    void exit();
+    void terminate();
 
-    void load_wiki();
-    void save_wiki();
+    int load_wiki();
+    int save_wiki();
 
     char get_char();
     long int get_long_int();
     double get_double();
     std::string get_string();
+    std::string get_cmd();
 
-    Dictionary<std::string, CountryData> countries;
+    int term;
+    std::string wiki_save;
+    Dictionary<CountryData> countries;
+    Dictionary<int> command_keys;
 };

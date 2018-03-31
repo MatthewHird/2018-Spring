@@ -10,19 +10,67 @@
 #include <exception>
 
 
-class FullContainer
+class InvalidInput : public std::exception
 {
 public:
 
-private:
-
+    const char* what() const throw()
+    {
+        return "Error: Invalid input\n";
+    };
 };
 
 
-class EmptyContainer
+class EmptyInput : public std::exception
 {
 public:
 
-private:
+    const char* what() const throw()
+    {
+        return "Error: Empty input\n";
+    };
+};
 
+
+class FullContainer : public std::exception
+{
+public:
+
+    const char* what() const throw()
+    {
+        return "Error: Full container\n";
+    };
+};
+
+
+class EmptyContainer : public std::exception
+{
+public:
+
+    const char* what() const throw()
+    {
+        return "Error: Empty container\n";
+    };
+};
+
+
+class DuplicateKey : public std::exception
+{
+public:
+
+    const char* what() const throw()
+    {
+        return "Error: Duplicate key\n";
+    };
+};
+
+
+class MissingKey : public std::exception
+{
+public:
+
+    const char* what() const throw()
+    {
+        return "Error: Missing key\n";
+    };
 };
