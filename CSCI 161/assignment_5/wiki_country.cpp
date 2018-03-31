@@ -98,7 +98,7 @@ void WikiCountry::menu()
                 break;
 
             case 6: // help
-                std::cout << "help!\n";
+                std::cout << "\n";
                 break;
 
             case 7: // exit
@@ -115,7 +115,20 @@ void WikiCountry::menu()
 
 void WikiCountry::list()
 {
-    std::cout << "\n" << countries.get_key_list() << "\n";
+    std::stringstream sstr;
+    sstr << countries.get_key_list();
+    int count = countries.get_size();
+
+    std::cout << "\nNames of countries in system:\n\n";
+
+    for (int i = 0; i < count; i++)
+    {
+        std::string c_name;
+        getline(sstr, c_name);
+        std::cout << " " << c_name << "\n";
+    }
+
+    std::cout << "\n";
 }
 
 
@@ -128,7 +141,7 @@ void WikiCountry::show()
     {
         const CountryData& data = countries.lookup(c_name);
         
-        std::cout << "Name: " << c_name << "\n"; 
+        std::cout << "\nName: " << c_name << "\n"; 
 
         if (data.get_capital() != "")
         {
@@ -142,7 +155,7 @@ void WikiCountry::show()
 
         if (data.get_area() != -1)
         {
-            std::cout << "Area: " << data.get_area() << "square kilometers\n";
+            std::cout << "Area: " << data.get_area() << " square kilometers\n";
         }
          if (data.get_population() != -1)
         {
@@ -192,31 +205,31 @@ void WikiCountry::add()
 
     CountryData& data = *(new CountryData(c_name));
     
-    std::cout << "\n";
+    std::cout << "Please enter the capital city of this country\n";
     data.set_capital(get_string(true));
     
-    std::cout << "\n";
+    std::cout << "Please enter the official language or languages of this country\n";
     data.set_language(get_string(true));
     
-    std::cout << "\n";
+    std::cout << "Please enter the area of this country in square kilometers\n";
     double area = get_double();
     while (area == -2)
     {
-        std::cout << "\n";
+        std::cout << "Entry must be a double float value\n";
         area = get_double();
     }
     data.set_area(area);
 
-    std::cout << "\n";
+    std::cout << "Please enter the population of this country\n";
     long int pop = get_long_int();
     while (pop == -2)
     {
-        std::cout << "\n";
+        std::cout << "Entry must be a positive integer\n";
         pop = get_long_int();
     }
     data.set_population(pop);
 
-    std::cout << "\n";
+    std::cout << "Please enter a description or any other details about this country\n";
     data.set_description(get_string(true));
 
     try
@@ -264,13 +277,27 @@ void WikiCountry::update()
     std::cout << "Would you like to update the country's area field?\n";
     if (get_confirmation())
     {
-        new_data.set_area(get_double());
+        double area = get_double();
+        while (area == -2)
+        {
+            std::cout << "Entry must be a double float value\n";
+            area = get_double();
+        }
+        
+        new_data.set_area(area);
     }
 
     std::cout << "Would you like to update the country's population field?\n";
     if (get_confirmation())
     {
-        new_data.set_population(get_long_int());
+        long int pop = get_long_int();
+        while (pop == -2)
+        {
+            std::cout << "Entry must be a positive integer\n";
+            pop = get_long_int();
+        }
+
+        new_data.set_population(pop);
     }
 
     std::cout << "Would you like to update the country's description field?\n";
@@ -286,7 +313,7 @@ void WikiCountry::update()
     }
     catch (std::exception& e)
     {
-
+        std::cout << e.what() << "\n";
     }
 }
 
@@ -378,7 +405,7 @@ bool WikiCountry::get_confirmation()
     {
         return true;
     }
-    if (sel == 'N')
+    else if (sel == 'N')
     {
         return false;
     }
@@ -390,6 +417,7 @@ long int WikiCountry::get_long_int()
     std::string str_form;
     long int int_form = 0;
     
+    std::cout << ">>>  ";
     std::getline(std::cin, str_form);
     
     if (str_form.length() == 0) 
@@ -419,6 +447,7 @@ double WikiCountry::get_double()
     int start_count = false;
     int count = 0;
     
+    std::cout << ">>>  ";
     std::getline(std::cin, str_form);
     
     if (str_form.length() == 0) 
@@ -446,8 +475,10 @@ double WikiCountry::get_double()
             {
                 return -2;
             }
+
             dbl_form = dbl_form * 10;
             dbl_form += (str_form[i] - '0');
+            
             if (start_count == true)
             {
                 count++;
