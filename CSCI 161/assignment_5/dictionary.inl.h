@@ -59,7 +59,7 @@ void Dictionary<Data>::insert(std::string k, const Data& d) throw(FullContainer,
 {
     int index = bin_search(k);
 
-    if (index < size && k == entries[index].key)
+    if (index < size && entries[index].key == k)
     {
         throw DuplicateKey();
     }
@@ -82,7 +82,7 @@ void Dictionary<Data>::insert(std::string k, const Data& d) throw(FullContainer,
 
 
 template<class Data>
-void Dictionary<Data>::remove(std::string k) throw(EmptyContainer, MissingKey)
+const Data& Dictionary<Data>::remove(std::string k) throw(EmptyContainer, MissingKey)
 {
     int index = bin_search(k);
 
@@ -90,12 +90,12 @@ void Dictionary<Data>::remove(std::string k) throw(EmptyContainer, MissingKey)
     {
         throw EmptyContainer();
     }
-    if (index >= size || k != entries[index].key)
+    if (index >= size || entries[index].key != k)
     {
         throw MissingKey();
     }
 
-    delete entries[index].data;
+    const Data* d = entries[index].data;
 
     for (int i = index; i < size-1; i++)
     {
@@ -105,6 +105,8 @@ void Dictionary<Data>::remove(std::string k) throw(EmptyContainer, MissingKey)
 
     size--;
     key_list.remove(k);
+
+    return *d;
 }
 
 
@@ -137,6 +139,22 @@ template<class Data>
 std::string Dictionary<Data>::get_key_list()
 {
     return key_list.get_my_list();
+}
+
+
+template<class Data>
+bool Dictionary<Data>::has_key(std::string k)
+{
+    int index = bin_search(k);
+
+    if (index >= size || entries[index].key != k)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 
 

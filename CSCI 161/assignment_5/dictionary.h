@@ -21,11 +21,12 @@ public:
     ~Dictionary();
 
     void insert(std::string k, const Data& d) throw(FullContainer, DuplicateKey);
-    void remove(std::string k) throw(EmptyContainer, MissingKey);
+    const Data& remove(std::string k) throw(EmptyContainer, MissingKey);
     const Data& lookup(std::string k) throw(EmptyContainer, MissingKey);
 
     int get_size();
     std::string get_key_list();
+    bool has_key(std::string k);
 
 private:
     int bin_search(std::string k);

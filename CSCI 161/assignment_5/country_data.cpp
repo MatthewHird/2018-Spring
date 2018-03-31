@@ -11,14 +11,14 @@
 
 
 CountryData::CountryData()
-    : area(0)
-    , population(0)
+    : area(-1)
+    , population(-1)
 {}
 
 
 CountryData::CountryData(std::string c_name)
-    : area(0)
-    , population(0)
+    : area(-1)
+    , population(-1)
 {
     name = c_name;
 }
@@ -101,37 +101,37 @@ void CountryData::set_description(std::string descript)
 }
 
 
-std::string CountryData::get_name()
+std::string CountryData::get_name() const
 {
     return name;
 }
 
 
-std::string CountryData::get_capital()
+std::string CountryData::get_capital() const
 {
     return capital;
 }
 
 
-std::string CountryData::get_language()
+std::string CountryData::get_language() const
 {
     return language;
 }
 
 
-double CountryData::get_area()
+double CountryData::get_area() const
 {
     return area;
 }
 
 
-long int CountryData::get_population()
+long int CountryData::get_population() const
 {
     return population;
 }
 
 
-std::string CountryData::get_description()
+std::string CountryData::get_description() const
 {
     return description;
 }

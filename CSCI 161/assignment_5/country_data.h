@@ -28,12 +28,12 @@ public:
     void set_population(long int pop);
     void set_description(std::string descript);
 
-    std::string get_name();
-    std::string get_capital();
-    std::string get_language();
-    double get_area();
-    long int get_population();
-    std::string get_description();
+    std::string get_name() const;
+    std::string get_capital() const;
+    std::string get_language() const;
+    double get_area() const;
+    long int get_population() const;
+    std::string get_description() const;
 
 private:
     std::string name;

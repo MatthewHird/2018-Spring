@@ -10,21 +10,12 @@
 #include <fstream>
 #include <exception>
 #include <cmath>
+#include <sstream>
+#include <algorithm>
 #include "wiki_country.h"
 #include "dictionary.h"
 #include "country_data.h"
 #include "my_exceptions.h"
-#include "str_key.h"
-
-
-int ZERO = 0;
-int ONE = 1;
-int TWO = 2;
-int THREE = 3;
-int FOUR = 4;
-int FIVE = 5;
-int SIX = 6;
-int SEVEN = 7;
 
 
 WikiCountry::WikiCountry()
@@ -74,7 +65,8 @@ void WikiCountry::menu()
         
         try
         {
-             std::string command = get_string();
+             std::string command = get_string(false);
+             std::transform(command.begin(), command.end(), command.begin(), tolower);
              sel = command_keys.lookup(command); 
       
         }
@@ -90,23 +82,23 @@ void WikiCountry::menu()
                 break;
                 
             case 2: // show
-                std::cout << "sho\n";
+                show();
                 break;
                 
             case 3: // remove
-                std::cout << "rem\n";
+                remove();
                 break;
                 
             case 4: // add
-                std::cout << "ad\n";
+                add();
                 break;
                 
             case 5: // update
-                std::cout << "up\n";
+                update();
                 break;
 
             case 6: // help
-                std::cout << "hel\n";
+                std::cout << "help!\n";
                 break;
 
             case 7: // exit
@@ -127,21 +119,175 @@ void WikiCountry::list()
 }
 
 
+void WikiCountry::show()
+{
+    std::cout << "Please enter the name of the country whose information you would like to see\n";
+    std::string c_name = get_string(true);
+    
+    if (countries.has_key(c_name))
+    {
+        const CountryData& data = countries.lookup(c_name);
+        
+        std::cout << "Name: " << c_name << "\n"; 
+
+        if (data.get_capital() != "")
+        {
+            std::cout << "Capital: " << data.get_capital() << "\n";
+        }
+
+        if (data.get_language() != "")
+        {
+            std::cout << "Languages: " << data.get_language() << "\n";
+        }
+
+        if (data.get_area() != -1)
+        {
+            std::cout << "Area: " << data.get_area() << "square kilometers\n";
+        }
+         if (data.get_population() != -1)
+        {
+            std::cout << "Population: " << data.get_population() << "\n";
+        }
+
+        if (data.get_description() != "")
+        {
+            std::cout << "Description: " << data.get_description() << "\n";
+        }
+    }
+    else
+    {
+        std::cout << "Invalid entry\n";
+    }
+
+    std::cout << "\n";
+}
+
+
 void WikiCountry::remove()
 {
+    std::cout << "Please enter the name of the country whose information you would like to remove\n";
+    std::string c_name = get_string(true);
 
+    if (countries.has_key(c_name) == false)
+    {
+        std::cout << "Country was not in system\n";
+        return;
+    }
+
+    const CountryData* data = &(countries.remove(c_name));
+    delete data;
 }
 
 
 void WikiCountry::add()
 {
+    std::cout << "Please enter the name of the country you would like to add to the system\n";
+    std::string c_name = get_string(false);
+    
+    if (countries.has_key(c_name))
+    {
+        std::cout << "Country already in system\n";
+        return;
+    }
 
+    CountryData& data = *(new CountryData(c_name));
+    
+    std::cout << "\n";
+    data.set_capital(get_string(true));
+    
+    std::cout << "\n";
+    data.set_language(get_string(true));
+    
+    std::cout << "\n";
+    double area = get_double();
+    while (area == -2)
+    {
+        std::cout << "\n";
+        area = get_double();
+    }
+    data.set_area(area);
+
+    std::cout << "\n";
+    long int pop = get_long_int();
+    while (pop == -2)
+    {
+        std::cout << "\n";
+        pop = get_long_int();
+    }
+    data.set_population(pop);
+
+    std::cout << "\n";
+    data.set_description(get_string(true));
+
+    try
+    {
+        countries.insert(c_name, data);
+    }
+    catch (std::exception& e)
+    {
+        std::cout << e.what() << "\n";
+    }
 }
 
 
 void WikiCountry::update()
 {
+    std::cout << "Please enter the name of the country whose information you would like to remove\n";
+    std::string c_name = get_string(true);
 
+    if (countries.has_key(c_name) == false)
+    {
+        std::cout << "Country was not in system\n";
+        return;
+    }
+
+    CountryData& new_data = *(new CountryData(countries.lookup(c_name)));
+    
+    std::cout << "Would you like to update the country's name field?\n";
+    if (get_confirmation())
+    {
+        new_data.set_name(get_string(false));
+    }
+
+    std::cout << "Would you like to update the country's capital field?\n";
+    if (get_confirmation())
+    {
+        new_data.set_capital(get_string(true));
+    }
+
+    std::cout << "Would you like to update the country's language field?\n";
+    if (get_confirmation())
+    {
+        new_data.set_language(get_string(true));
+    }
+
+    std::cout << "Would you like to update the country's area field?\n";
+    if (get_confirmation())
+    {
+        new_data.set_area(get_double());
+    }
+
+    std::cout << "Would you like to update the country's population field?\n";
+    if (get_confirmation())
+    {
+        new_data.set_population(get_long_int());
+    }
+
+    std::cout << "Would you like to update the country's description field?\n";
+    if (get_confirmation())
+    {
+        new_data.set_description(get_string(true));
+    }
+
+    try{
+        const CountryData* old_data = &(countries.remove(c_name));
+        delete old_data;
+        countries.insert(new_data.get_name(), new_data);
+    }
+    catch (std::exception& e)
+    {
+
+    }
 }
 
 
@@ -157,6 +303,7 @@ int WikiCountry::load_wiki()
     int entry_count;
     std::ifstream fin;
 
+    // fin.open("test_save.txt");
     fin.open(wiki_save.c_str());
 
     if (fin.fail()) 
@@ -192,31 +339,49 @@ int WikiCountry::save_wiki()
 {
     int entry_count = countries.get_size();
     std::ofstream fout;
+    std::stringstream sstr;
+    sstr << countries.get_key_list();
     
     fout.open("test_save.txt");
-    fout << entry_count << std::endl;
-    
-    fout << countries.lookup("China");
-    
+    fout << entry_count << "\n";
+
+    for (int i = 0; i < entry_count; i++ )
+    {
+        std::string c_name;
+        getline(sstr, c_name);
+        fout << countries.lookup(c_name);
+    }
+
     fout.close();
     return entry_count;
 }
 
 
-char WikiCountry::get_char()
+bool WikiCountry::get_confirmation()
 {
     char sel;
-
-    std::cout << ">>>  ";
-    std::cin.get(sel);                   
     
-    if (sel != '\n') 
+    do
     {
-        std::cin.ignore();
-    }
+        std::cout << "Yes (Y) or No (N)\n"
+                  << ">>>  ";
+        std::cin.get(sel);                   
     
-    sel = toupper(sel);
-    return sel;  
+        if (sel != '\n') 
+        {
+            std::cin.ignore();
+        }
+        sel = toupper(sel);
+    } while (sel != 'Y' && sel != 'N');
+    
+    if (sel == 'Y')
+    {
+        return true;
+    }
+    if (sel == 'N')
+    {
+        return false;
+    }
 }
 
 
@@ -295,7 +460,7 @@ double WikiCountry::get_double()
 }
 
 
-std::string WikiCountry::get_string()
+std::string WikiCountry::get_string(bool blank_ok)
 {
     int bad_input;
     std::string str_in;
@@ -307,7 +472,7 @@ std::string WikiCountry::get_string()
         std::cout << ">>>  ";
         std::getline(std::cin, str_in);
         
-        if (str_in.length() == 0) 
+        if (blank_ok == false && str_in.length() == 0) 
         {
             bad_input = true;
             std::cout << "Input must not be left blank\n";
@@ -320,10 +485,4 @@ std::string WikiCountry::get_string()
     } while (bad_input == true);
 
     return str_in;
-}
-
-
-std::string WikiCountry::get_cmd()
-{
-
 }
