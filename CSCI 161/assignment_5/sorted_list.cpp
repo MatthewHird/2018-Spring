@@ -1,23 +1,23 @@
 //------------------------------------------------------------------------------
-// @file       my_list.cpp
+// @file       sorted_list.cpp
 // @author     Matthew Hird
 // @date       April 1, 2018
 //
 // @brief      The main function for the program pex5.
 //------------------------------------------------------------------------------
 
-#include "my_list.h"
+#include "sorted_list.h"
 #include <iostream>
 
 
-MyList::MyList()
+SortedList::SortedList()
 {
     head = new Node;
     head->next = nullptr;
 }
 
 
-MyList::~MyList()
+SortedList::~SortedList()
 {
     Node* victim = head->next;
     while (victim != nullptr)
@@ -26,11 +26,12 @@ MyList::~MyList()
         delete victim;
         victim = head->next;
     }
+    
     delete head;
 }
 
 
-void MyList::insert(std::string k)
+void SortedList::insert(std::string k)
 {
     Node* ptr = head;
     Node* new_entry = new Node;
@@ -47,7 +48,7 @@ void MyList::insert(std::string k)
 }
 
 
-void MyList::remove(std::string k)
+void SortedList::remove(std::string k)
 {
     Node* ptr = head;
     Node* victim = head->next;
@@ -60,13 +61,14 @@ void MyList::remove(std::string k)
             delete victim;
             return;
         }
+        
         ptr = ptr->next;
         victim = victim->next;
     }
 }
 
 
-std::string MyList::get_my_list()
+std::string SortedList::get_sorted_list()
 {
     std::string all_names;
     Node* ptr = head->next;
@@ -75,5 +77,6 @@ std::string MyList::get_my_list()
        all_names += ptr->name + "\n";
        ptr = ptr->next;
     }
+    
     return all_names;
 }

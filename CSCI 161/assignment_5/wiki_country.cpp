@@ -20,7 +20,6 @@
 
 WikiCountry::WikiCountry()
     : term(false)
-    , wiki_save("wikiCountry.txt")
 {
     command_keys.insert("list", ONE);
     command_keys.insert("show", TWO);
@@ -57,7 +56,7 @@ void WikiCountry::menu()
         << " show     Show the full information of a country\n"
         << " remove   Remove a country and its entry from the system\n"
         << " add      Add a new country and entry to the system\n"
-        << " update   Update any information about a country (except its name)\n"
+        << " update   Update any information about a country\n"
         << " help     Shows list of commands\n"
         << " exit     Terminates the program\n"
         << "\n" 
@@ -325,7 +324,7 @@ void WikiCountry::terminate()
 }
 
 
-int WikiCountry::load_wiki()
+void WikiCountry::load_wiki()
 {
     int entry_count;
     std::ifstream fin;
@@ -335,7 +334,7 @@ int WikiCountry::load_wiki()
 
     if (fin.fail()) 
     {
-        return 0;
+        return;
     }
 
     fin >> entry_count;
@@ -356,13 +355,12 @@ int WikiCountry::load_wiki()
             std::cout << e.what() << "\n";
         }
     }
+    
     fin.close();
-
-    return entry_count;
 }
 
 
-int WikiCountry::save_wiki()
+void WikiCountry::save_wiki()
 {
     int entry_count = countries.get_size();
     std::ofstream fout;
@@ -380,7 +378,6 @@ int WikiCountry::save_wiki()
     }
 
     fout.close();
-    return entry_count;
 }
 
 
@@ -398,6 +395,7 @@ bool WikiCountry::get_confirmation()
         {
             std::cin.ignore();
         }
+        
         sel = toupper(sel);
     } while (sel != 'Y' && sel != 'N');
     
@@ -431,6 +429,7 @@ long int WikiCountry::get_long_int()
         {
             return -2;
         }
+        
         int_form = int_form * 10;
         int_form += (str_form[i] - '0');
     }

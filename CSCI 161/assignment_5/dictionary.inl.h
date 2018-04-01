@@ -8,7 +8,7 @@
 
 #pragma once
 #include "my_exceptions.h"
-#include "my_list.h"
+#include "sorted_list.h"
 
 
 template<class Data>
@@ -35,6 +35,7 @@ Dictionary<Data>::Dictionary(const Dictionary& other)
     capacity = other.capacity;
     size = other.size;
     entries = other.entries;
+    
     for (int i = 0; i < size; i++)
     {
         entries[i] = other.entries[i];
@@ -44,14 +45,7 @@ Dictionary<Data>::Dictionary(const Dictionary& other)
 
 template<class Data>
 Dictionary<Data>::~Dictionary()
-{
-//    for (int i =0; i < size; i++)
-//    {
-//        delete entries[i].data;
-//    }
-//
-//    delete []entries;
-}
+{}
 
 
 template<class Data>
@@ -90,6 +84,7 @@ const Data& Dictionary<Data>::remove(std::string k) throw(EmptyContainer, Missin
     {
         throw EmptyContainer();
     }
+    
     if (index >= size || entries[index].key != k)
     {
         throw MissingKey();
@@ -119,6 +114,7 @@ const Data& Dictionary<Data>::lookup(std::string k) throw(EmptyContainer, Missin
     {
         throw EmptyContainer();
     }
+    
     if (index >= size || k != entries[index].key)
     {
         throw MissingKey();
@@ -138,7 +134,7 @@ int Dictionary<Data>::get_size()
 template<class Data>
 std::string Dictionary<Data>::get_key_list()
 {
-    return key_list.get_my_list();
+    return key_list.get_sorted_list();
 }
 
 

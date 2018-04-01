@@ -13,7 +13,11 @@
 class InvalidInput : public std::exception
 {
 public:
-
+    /**
+     * @brief      Returns a null terminated error message.
+     *
+     * @return     Error message.
+     */
     const char* what() const throw()
     {
         return "Error: Invalid input\n";
@@ -24,7 +28,11 @@ public:
 class EmptyInput : public std::exception
 {
 public:
-
+    /**
+     * @brief      Returns a null terminated error message.
+     *
+     * @return     Error message.
+     */
     const char* what() const throw()
     {
         return "Error: Empty input\n";
@@ -35,7 +43,11 @@ public:
 class FullContainer : public std::exception
 {
 public:
-
+    /**
+     * @brief      Returns a null terminated error message.
+     *
+     * @return     Error message.
+     */
     const char* what() const throw()
     {
         return "Error: Full container\n";
@@ -46,7 +58,11 @@ public:
 class EmptyContainer : public std::exception
 {
 public:
-
+    /**
+     * @brief      Returns a null terminated error message.
+     *
+     * @return     Error message.
+     */
     const char* what() const throw()
     {
         return "Error: Empty container\n";
@@ -57,7 +73,11 @@ public:
 class DuplicateKey : public std::exception
 {
 public:
-
+    /**
+     * @brief      Returns a null terminated error message.
+     *
+     * @return     Error message.
+     */
     const char* what() const throw()
     {
         return "Error: Duplicate key\n";
@@ -68,7 +88,11 @@ public:
 class MissingKey : public std::exception
 {
 public:
-
+    /**
+     * @brief      Returns a null terminated error message.
+     *
+     * @return     Error message.
+     */
     const char* what() const throw()
     {
         return "Error: Missing key\n";
