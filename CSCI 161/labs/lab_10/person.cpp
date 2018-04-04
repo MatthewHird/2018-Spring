@@ -3,30 +3,21 @@
 
 
 Person::Person()
+    : child_count(0)
 {
-
+    children = new Person*[MAX_KIDS];
 }
 
 
 Person::Person(std::string in_name)
+    : child_count(0)
+    , name(in_name)
 {
-
-}
-
-
-Person::Person(const Person& other)
-{
-
+    children = new Person*[MAX_KIDS];
 }
 
 
 Person::~Person()
 {
-    
-}
-
-
-int Person::get_child_count()
-{
-
+    delete []children;
 }
