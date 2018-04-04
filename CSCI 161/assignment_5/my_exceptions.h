@@ -3,7 +3,9 @@
 // @author     Matthew Hird
 // @date       April 1, 2018
 //
-// @brief      The main function for the program pex5.
+// @brief      The declaration and implementation of custom exception classes
+//             used in pex5. Each of the exceptions is a subclass of 
+//             std::exception.
 //------------------------------------------------------------------------------
 
 #pragma once

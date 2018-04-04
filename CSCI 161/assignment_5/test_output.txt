@@ -1,0 +1,297 @@
+
+~~~~ Welcome to WikiCountry ~~~~
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  
+
+Invalid entry: Please try again
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  a
+
+Invalid entry: Please try again
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  list
+
+Names of countries in system:
+
+ Canada
+ China
+ Democratic Republic of the Congo
+ Singapore
+ United States of America
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  SHow
+Please enter the name of the country whose information you would like to see
+>>>  a
+
+Country is not in system
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  show
+Please enter the name of the country whose information you would like to see
+>>>  Canada
+
+Name: Canada
+Capital: Ottawa
+Languages: English and French
+Area: 9.98467e+06 square kilometers
+Population: 35151728
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  remove
+Please enter the name of the country whose information you would like to remove
+>>>  a
+
+Country was not in system
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  remove
+Please enter the name of the country whose information you would like to remove
+>>>  China
+
+China has been removed from the system
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  list
+
+Names of countries in system:
+
+ Canada
+ Democratic Republic of the Congo
+ Singapore
+ United States of America
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  add
+Please enter the name of the country you would like to add to the system
+>>>        
+Input must not be left blank
+>>>  France
+Please enter the capital city of this country
+>>>  Paris
+Please enter the official language or languages of this country
+>>>  French
+Please enter the area of this country in square kilometers
+>>>  
+Please enter the population of this country
+>>>  fifty
+Entry must be a positive integer
+>>>  -20
+Entry must be a positive integer
+>>>  50
+Please enter a description or any other details about this country
+>>>  
+
+France has been added to the system
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  show  
+Please enter the name of the country whose information you would like to see
+>>>  France
+
+Name: France
+Capital: Paris
+Languages: French
+Population: 50
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  update
+Please enter the name of the country whose information you would like to update
+>>>  a
+
+Country was not in system
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  update
+Please enter the name of the country whose information you would like to update
+>>>  France
+Would you like to update the country's name field?
+Yes (Y) or No (N)
+>>>  n
+Would you like to update the country's capital field?
+Yes (Y) or No (N)
+>>>  n
+Would you like to update the country's language field?
+Yes (Y) or No (N)
+>>>  n
+Would you like to update the country's area field?
+Yes (Y) or No (N)
+>>>  n
+Would you like to update the country's population field?
+Yes (Y) or No (N)
+>>>  y
+>>>  70000000
+Would you like to update the country's description field?
+Yes (Y) or No (N)
+>>>  n
+
+France has successfully been updated
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  show
+Please enter the name of the country whose information you would like to see
+>>>  France
+
+Name: France
+Capital: Paris
+Languages: French
+Population: 70000000
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  help
+
+Please enter a command listed below:
+
+ list     List the name of all countries currently in the system
+ show     Show the full information of a country
+ remove   Remove a country and its entry from the system
+ add      Add a new country and entry to the system
+ update   Update any information about a country
+ help     Shows list of commands
+ exit     Terminates the program
+
+------------------------------------------------------------------
+>>>  exit

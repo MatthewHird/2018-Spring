@@ -3,7 +3,10 @@
 // @author     Matthew Hird
 // @date       April 1, 2018
 //
-// @brief      The main function for the program pex5.
+// @brief      An alphabetically sorted list of std::string objects. Strings can
+//             be added or removed by name. Also, all of the strings stored in 
+//             SortedList can be returned, concatenated into a single 
+//             std::string. Each string is seperated by a newline character \n.
 //------------------------------------------------------------------------------
 
 #include "sorted_list.h"

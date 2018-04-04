@@ -3,7 +3,15 @@
 // @author     Matthew Hird
 // @date       April 1, 2018
 //
-// @brief      The main function for the program pex5.
+// @brief      The main business logic for pex5. Allows user to interact with a 
+//             dictionary that uses country names as keys that are paired with
+//             various fields of information on each country. The user can 
+//             display information on a country, add a new country to the 
+//             system, update information on any country currently in the 
+//             system, or remove an country and all associated information from
+//             the system. All information in the system gets saved to a .txt
+//             file when the program terminates, and all information in the .txt
+//             file gets added to the system the next time the systems runs.
 //------------------------------------------------------------------------------
 
 #include <iostream>
@@ -18,6 +26,12 @@
 #include "my_exceptions.h"
 
 
+/**
+ * Adds key/value pairs, of types std::string and int respectively, to a 
+ * Dictionary called command_keys. The keys are unique commands, and the values
+ * are unique integers. command_keys is used to convert user input strings into
+ * into integers that match the cases of the switch in menu(). 
+ */
 WikiCountry::WikiCountry()
     : term(false)
 {
@@ -64,7 +78,7 @@ void WikiCountry::menu()
         
         try
         {
-             std::string command = get_string(false);
+             std::string command = get_string(true);
              std::transform(command.begin(), command.end(), command.begin(), tolower);
              sel = command_keys.lookup(command); 
       
@@ -105,7 +119,7 @@ void WikiCountry::menu()
                 break;
             
             default:
-                std::cout << "Invalid entry: Please try again\n\n";
+                std::cout << "\nInvalid entry: Please try again\n\n";
                 break;
         }
     }
@@ -168,7 +182,7 @@ void WikiCountry::show()
     }
     else
     {
-        std::cout << "Invalid entry\n";
+        std::cout << "\nCountry is not in system\n";
     }
 
     std::cout << "\n";
@@ -182,12 +196,13 @@ void WikiCountry::remove()
 
     if (countries.has_key(c_name) == false)
     {
-        std::cout << "Country was not in system\n";
+        std::cout << "\nCountry was not in system\n\n";
         return;
     }
 
     const CountryData* data = &(countries.remove(c_name));
     delete data;
+    std::cout << "\n" << c_name << " has been removed from the system\n\n";
 }
 
 
@@ -198,7 +213,7 @@ void WikiCountry::add()
     
     if (countries.has_key(c_name))
     {
-        std::cout << "Country already in system\n";
+        std::cout << "\nCountry already in system\n\n";
         return;
     }
 
@@ -239,17 +254,30 @@ void WikiCountry::add()
     {
         std::cout << e.what() << "\n";
     }
+
+    std::cout << "\n" << c_name << " has been added to the system\n\n";
 }
 
 
+/**
+ * Prompts user for the name of the country whose information they want to
+ * update. If the country isn't in the system, a message is displayed and return
+ * is called. Otherwise, creates a reference to a copy of the CountryData object
+ * with the entered name. Each of the information fields can be updated,
+ * including name. Then the old entry is removed from the dictionary and its
+ * CountryData is deleted, and the new CountryData object is inserted into the
+ * dictionary. The original entry isn't updated because the dictionary stores
+ * CountryData as constant references, meaning none of its member variables may
+ * be modified.
+ */
 void WikiCountry::update()
 {
-    std::cout << "Please enter the name of the country whose information you would like to remove\n";
+    std::cout << "Please enter the name of the country whose information you would like to update\n";
     std::string c_name = get_string(true);
 
     if (countries.has_key(c_name) == false)
     {
-        std::cout << "Country was not in system\n";
+        std::cout << "\nCountry was not in system\n\n";
         return;
     }
 
@@ -314,6 +342,16 @@ void WikiCountry::update()
     {
         std::cout << e.what() << "\n";
     }
+
+    if (c_name == new_data.get_name())
+    {
+        std::cout << "\n" << c_name << " has successfully been updated\n\n";
+    }
+    else
+    {
+        std::cout << "\n" << new_data.get_name() << " (formerly " << c_name 
+                  << ") has successfully been updated\n\n";
+    }
 }
 
 
@@ -329,7 +367,6 @@ void WikiCountry::load_wiki()
     int entry_count;
     std::ifstream fin;
 
-    // fin.open("test_save.txt");
     fin.open(wiki_save.c_str());
 
     if (fin.fail()) 
@@ -367,7 +404,7 @@ void WikiCountry::save_wiki()
     std::stringstream sstr;
     sstr << countries.get_key_list();
     
-    fout.open("test_save.txt");
+    fout.open(wiki_save.c_str());
     fout << entry_count << "\n";
 
     for (int i = 0; i < entry_count; i++ )

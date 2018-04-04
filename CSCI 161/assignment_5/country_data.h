@@ -3,7 +3,13 @@
 // @author     Matthew Hird
 // @date       April 1, 2018
 //
-// @brief      The main function for the program pex5.
+// @brief      A data object that contains various pieces of information on a 
+//             specific country. The information fields are country name, 
+//             capital city, languages, area, population, and description. 
+//             Each field can be set or retrieved through various public 
+//             methods. Additionally, the istream >> operator and ostream << 
+//             operator are overloaded to save and load CountryData information
+//             fields from a .txt file or std::string object. 
 //------------------------------------------------------------------------------
 
 #pragma once

@@ -3,7 +3,15 @@
 // @author     Matthew Hird
 // @date       April 1, 2018
 //
-// @brief      The main function for the program pex5.
+// @brief      The main business logic for pex5. Allows user to interact with a 
+//             dictionary that uses country names as keys that are paired with
+//             various fields of information on each country. The user can 
+//             display information on a country, add a new country to the 
+//             system, update information on any country currently in the 
+//             system, or remove an country and all associated information from
+//             the system. All information in the system gets saved to a .txt
+//             file when the program terminates, and all information in the .txt
+//             file gets added to the system the next time the systems runs.
 //------------------------------------------------------------------------------
 
 #pragma once

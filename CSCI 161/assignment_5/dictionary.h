@@ -3,7 +3,10 @@
 // @author     Matthew Hird
 // @date       April 1, 2018
 //
-// @brief      The main function for the program pex5.
+// @brief      A templated dictionary class that hold key/value pairs of types
+//             std::string and Data respectively. Key/value pairs can be added
+//             or removed, or a key can be used to search for Data paired with 
+//             it. Also contains a sorted list of keys currently in Dictionary.  
 //------------------------------------------------------------------------------
 
 #pragma once
