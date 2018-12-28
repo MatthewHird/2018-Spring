@@ -1,10 +1,4 @@
 5
-Canada
-Ottawa
-English and French
-9.98467e+06
-35151728
-
 China
 Beijing
 Standard Chinese
@@ -29,3 +23,9 @@ English
 9.83352e+06
 325719178
 probably the only country still not using the metric system
+d
+s
+a
+3
+-1
+r

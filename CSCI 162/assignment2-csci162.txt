@@ -1,0 +1,70 @@
+CSCI 162: Assignment 2
+Date: April 5, 2018
+Name: Matthew Hird
+Student Number: 545366650
+
+
+Question 1:
+  
+a) Output: 10
+b) Output: 66
+c) Equivalent c++ program:
+
+#include <iostream>
+
+int main()
+{
+    int start_val;
+    int max_loops;
+    int adder;
+    int answer = 0;
+
+    std::cout << "Please input starting integer value\n"
+              << ">>> ";
+
+    std::cin >> start_val;
+    std::cin.ignore();
+
+    std::cout << "Please input number of iterations\n"
+              << ">>> ";
+
+    std::cin >> max_loops;
+    std::cin.ignore();
+
+    adder = start_val;
+
+    for (int i = 0; i <= max_loops; i++)
+    {
+        answer += adder;
+        adder++;
+    }
+
+    std::cout << "Final value: " << answer << "\n";
+    return 0;
+}
+
+
+Question 2:
+
+a) Predicate for "append(L1,L2,L3).":
+
+append([],X,X).
+append([H|T1],X,[H|T2]):- 
+    append(T1,X,T2).
+
+
+b) Predicate of "size(L,X).":
+
+size([], 0).
+size([_|T], S1) :-
+    size(T, S2),
+    S1 is S2 + 1.
+
+
+c) Predicate for "halves(L,LF,LB).":
+
+halves(L,F,B):-
+    append(F,B,L),
+    size(L,S),
+    FS is ceiling(S/2),
+    size(F,FS).
